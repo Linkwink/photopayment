@@ -30,6 +30,7 @@
         }
 
         function getUser() {
+        console.log(true);
             return user;
         }
 

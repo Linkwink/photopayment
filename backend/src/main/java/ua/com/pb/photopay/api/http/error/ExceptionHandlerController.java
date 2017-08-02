@@ -2,9 +2,9 @@ package ua.com.pb.photopay.api.http.error;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import ua.com.pb.photopay.infrastructure.exceptions.*;
 import ua.com.pb.photopay.infrastructure.viewmodels.errors.Error;
 
@@ -32,6 +32,7 @@ public class ExceptionHandlerController {
         logger.error(CODE + " " + ex.getMessage() + ". Entity " + ex.entity);
         return new Error(CODE, ex.entity);
     }
+
 
     /**
      * Handles entity already exists error

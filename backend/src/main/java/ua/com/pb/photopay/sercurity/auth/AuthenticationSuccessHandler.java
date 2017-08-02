@@ -70,7 +70,7 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
         // Add cookie to response
         response.addCookie(authCookie);
         response.addCookie(userCookie);
-        redirectStrategy.sendRedirect(request,response,"http://localhost:4200");
+        redirectStrategy.sendRedirect(request,response,"http://localhost:3000");
     }
 
 

@@ -102,7 +102,7 @@
             function roleIncludes(role) {
                 return user.roles.includes(role);
             }
-            debugger;
+
             if (roleIncludes(role.admin)) {
                 state.transitionTo('app.administrator.layout');
             } else if (roleIncludes(role.manager)) {
