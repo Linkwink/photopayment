@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+/backend/build/
+/backend/.gradle/
+/frontend/bower_components/
+/frontend/dist/
+/frontend/node_modules/
+/frontend/frontend.iml
+/frontend/.gulp-scss-cache/
+/.idea/

@@ -1,0 +1,30 @@
+{
+  "name": "photopay",
+  "description": "photopay app",
+  "main": "app.module.js",
+  "authors": [
+    "Khromoi Viacheslav"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.5",
+    "angular-resource": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "angular-ui-router": "^1.0.3",
+    "angular-cookies": "^1.6.5",
+    "moment": "^2.18.1"
+  }
+}

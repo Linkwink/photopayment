@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: photopay
+    user_cookie: c_u
+  profiles:
+  #Set active profile
+    active: test
+  #To use cache busting, the following configuration will configure a cache busting solution for all static resources
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 15MB
+      max-request-size: 15MB
+   #db settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/photopay
+    username: photopay
+    password: photopay
+    driver-class-name: org.postgresql.Driver
+  data:
+    rest:
+      base-path: /api/v1
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+
+jwt:
+  header: Authorization
+  expires_in: 600 # 10 minutes
+  secret: SrP1vf_aEn23vqMbqEsvzS
+  cookie: a_t
+
+
+google:
+  oauth2:
+    client:
+      clientId: 333752528825-0fdskplr2ab6nnkqcje877pdvlt6eo0b.apps.googleusercontent.com
+      clientSecret: vfASXW2g5Y-1R8S_C0fu30YN
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+      clientAuthenticationScheme: query
+      scope: profile email
+      token-name: oauth_token
+      authentication-scheme: form
+    resource:
+      userInfoUri: https://www.googleapis.com/userinfo/v2/me
+      preferTokenInfo: false
+
+

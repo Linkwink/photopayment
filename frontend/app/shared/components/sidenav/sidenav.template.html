@@ -1,0 +1,20 @@
+<md-sidenav
+        class="md-sidenav-left app-sidenav"
+        md-is-locked-open="$ctrl.model.sidenavOpen"
+        md-whiteframe="3">
+
+    <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">{{$ctrl.model.appName}}</h1>
+    </md-toolbar>
+    <md-content>
+        <md-list flex>
+            <md-list-item class="md-3-line" ng-click="null">
+                <md-icon  md-font-set="material-icons">home</md-icon>
+                <div class="md-list-item-text" layout="column">
+                    <span>Главная</span>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+</md-sidenav>

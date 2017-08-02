@@ -1,0 +1,21 @@
+<md-menu md-position-mode="target-right target"  md-offset="0 65">
+    <md-button ng-click="$mdMenu.open()"><img  class="img-round" height="44" width="44" ng-src="{{$ctrl.model.user.picture}}"></md-button>
+    <md-menu-content width="4" style="padding: 0px">
+        <md-card flex="100">
+            <md-card-header>
+                <md-card-avatar>
+                    <img ng-src="{{$ctrl.model.user.picture}}"/>
+                </md-card-avatar>
+                <md-card-header-text>
+                    <span class="md-title">{{$ctrl.model.user.name}}</span>
+                    <span class="md-subhead">{{$ctrl.model.user.roles.shift()}}</span>
+                </md-card-header-text>
+            </md-card-header>
+            <md-divider></md-divider>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="">Настройки</md-button>
+                <md-button ng-click="">Выход</md-button>
+            </md-card-actions>
+        </md-card>
+    </md-menu-content>
+</md-menu>

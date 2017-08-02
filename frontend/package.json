@@ -1,0 +1,29 @@
+{
+  "name": "photopay",
+  "version": "0.0.1",
+  "description": "photopay app",
+  "main": "app.module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "static-server -n index.html -p 4200"
+  },
+  "author": "Khromoi Viacheslav",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-gettext": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.2.0",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-wiredep": "^1.2.0",
+    "jshint": "^2.9.5",
+    "run-sequence": "^2.0.0"
+  }
+}

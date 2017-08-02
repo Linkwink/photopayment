@@ -1,0 +1,11 @@
+#test profile
+spring:
+  profiles: test
+  #test hibernate settings
+  jpa:
+      hibernate:
+        ddl-auto: create-drop
+logging:
+  level: debug
+
+

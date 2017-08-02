@@ -1,0 +1,6 @@
+spring:
+  profiles: production
+  #production hibernate settings
+  jpa:
+      hibernate:
+        ddl-auto: none
