@@ -38,13 +38,13 @@ const path = {
 
 gulp.task('build', (callback) => runSequence('clean', 'sass','generate-templates', 'pre_build', callback));
 
-gulp.task('browser', function() {
+gulp.task('browser', () =>
     browserSync.init({
         server: './dist',
         middleware: [ historyApiFallback() ],
         files: ['index.html', 'app/**/*']
-    });
-});
+    })
+);
 
 gulp.task('pre_build', () => {
 
@@ -79,41 +79,39 @@ return gulp.src(path.src.index)
 
 });
 
-gulp.task('clean', function (callback) {
+gulp.task('clean', callback => {
     del(path.build.root).then(() => {
         callback()
     });
 });
 
 
-gulp.task('sass', function () {
-    return gulp.src('./app/**/*.scss')
+gulp.task('sass', () =>
+    gulp.src('./app/**/*.scss')
         .pipe($.sass().on('error', $.sass.logError))
-        .pipe(gulp.dest('./app/'));
-});
+        .pipe(gulp.dest('./app/'))
+);
 
-gulp.task('copy-img', function () {
-   return gulp.src('./app/**/*.png')
+gulp.task('copy-img', () =>
+    gulp.src('./app/**/*.png')
        .pipe($.image())
        .pipe(gulp.dest(''))
-});
+);
 
-gulp.task('generate-templates', function () {
-    return gulp.src(path.src.html)
+gulp.task('generate-templates', () =>
+    gulp.src(path.src.html)
         .pipe($.angularTemplatecache('templates.js', {module: 'app', transformUrl: (url) => `app/${url}`}))
-    .pipe(gulp.dest(path.build.js));
-});
+        .pipe(gulp.dest(path.build.js))
+);
 
 
-gulp.task("vet", function () {
-    return gulp.src(path.src.js)
+gulp.task("vet", () =>
+    gulp.src(path.src.js)
         .pipe(jshint({esversion: 6}))
         .pipe(jshint.reporter('default'))
         .pipe(jscs())
-        .pipe(jscs.reporter());
-});
+        .pipe(jscs.reporter())
+);
 
 
-gulp.task('watcher', function () {
-    return gulp.watch(values(path.src), ['build']);
-});
+gulp.task('watcher', () => gulp.watch(values(path.src), ['build']));
