@@ -10,10 +10,7 @@ const argv = require('yargs').argv;
 const browserSync = require('browser-sync').create();
 const historyApiFallback = require('connect-history-api-fallback');
 
-
-
 let values = (obj) => Object.keys(obj).map(key => obj[key]);
-
 
 const path = {
     build: {
@@ -47,36 +44,36 @@ gulp.task('browser', () =>
 );
 
 gulp.task('pre_build', () => {
-
     let filter = (path) => $.filter(path, { restore : true});
-const templates = gulp.src(`${path.build.js}/templates.js`, {read: false}),
-    source = gulp.src(values(path.src), {read: false}),
+
+    const templates = gulp.src(`${path.build.js}/templates.js`, {read: false});
+    const source = gulp.src(values(path.src), {read: false});
+
     revFilter = filter(['**/*.js','**/*.css', '!index.html']),
     cssFilter = filter('css/*.css'),
     jsFilter = filter('js/*.js'),
     jsFilterApp = filter('js/app.js');
 
-return gulp.src(path.src.index)
-    .pipe($.inject(source))
-    .pipe($.wiredep())
-    .pipe($.useref())
-    .pipe(revFilter).pipe($.rev())
-    .pipe(revFilter.restore)
-    .pipe($.revReplace())
-    .pipe(jsFilterApp).pipe($.if(argv.minify, $.babel({presets: ['es2015']})))
-    .pipe(jsFilterApp.restore)
-    .pipe(jsFilter).pipe($.if(argv.minify, $.uglify()))
-    .pipe(jsFilter.restore)
-    .pipe(cssFilter)
-    .pipe($.autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-    }))
-    .pipe($.if(argv.minify, $.cleanCss({compatibility: 'ie8'})))
-    .pipe(cssFilter.restore)
-    .pipe($.inject(templates, { ignorePath: "dist", addRootSlash: false , name: 'template'}))
-    .pipe(gulp.dest(path.build.root));
-
+    return gulp.src(path.src.index)
+        .pipe($.inject(source))
+        .pipe($.wiredep())
+        .pipe($.useref())
+        .pipe(revFilter).pipe($.rev())
+        .pipe(revFilter.restore)
+        .pipe($.revReplace())
+        .pipe(jsFilterApp).pipe($.if(argv.minify, $.babel({presets: ['es2015']})))
+        .pipe(jsFilterApp.restore)
+        .pipe(jsFilter).pipe($.if(argv.minify, $.uglify()))
+        .pipe(jsFilter.restore)
+        .pipe(cssFilter)
+        .pipe($.autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe($.if(argv.minify, $.cleanCss({compatibility: 'ie8'})))
+        .pipe(cssFilter.restore)
+        .pipe($.inject(templates, { ignorePath: "dist", addRootSlash: false , name: 'template'}))
+        .pipe(gulp.dest(path.build.root));
 });
 
 gulp.task('clean', callback => {
@@ -84,7 +81,6 @@ gulp.task('clean', callback => {
         callback()
     });
 });
-
 
 gulp.task('sass', () =>
     gulp.src('./app/**/*.scss')
@@ -104,7 +100,6 @@ gulp.task('generate-templates', () =>
         .pipe(gulp.dest(path.build.js))
 );
 
-
 gulp.task("vet", () =>
     gulp.src(path.src.js)
         .pipe(jshint({esversion: 6}))
@@ -112,6 +107,5 @@ gulp.task("vet", () =>
         .pipe(jscs())
         .pipe(jscs.reporter())
 );
-
 
 gulp.task('watcher', () => gulp.watch(values(path.src), ['build']));
