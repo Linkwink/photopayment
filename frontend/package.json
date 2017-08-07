@@ -26,7 +26,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-filter": "^5.0.0",
     "gulp-if": "^2.0.2",
-    "gulp-image": "^2.10.0",
+    "gulp-imagemin": "^3.3.0",
     "gulp-inject": "^4.2.0",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.4",

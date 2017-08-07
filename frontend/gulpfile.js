@@ -9,6 +9,7 @@ const pump = require('pump');
 const argv = require('yargs').argv;
 const browserSync = require('browser-sync').create();
 const historyApiFallback = require('connect-history-api-fallback');
+const imagemin = require('gulp-imagemin');
 
 let values = (obj) => Object.keys(obj).map(key => obj[key]);
 
@@ -33,7 +34,7 @@ const path = {
     clean: './dist'
 };
 
-gulp.task('build', (callback) => runSequence('clean', 'sass','generate-templates', 'pre_build', callback));
+gulp.task('build', (callback) => runSequence( 'sass','generate-templates', 'pre_build', callback));
 
 gulp.task('browser', () =>
     browserSync.init({
@@ -88,10 +89,9 @@ gulp.task('sass', () =>
         .pipe(gulp.dest('./app/'))
 );
 
-gulp.task('copy-img', () =>
-    gulp.src('./app/**/*.png')
-       .pipe($.image())
-       .pipe(gulp.dest(''))
+gulp.task('minify-img', () =>
+    gulp.src('app/assets/**/*.png')
+       .pipe(gulp.dest('./dist'))
 );
 
 gulp.task('generate-templates', () =>

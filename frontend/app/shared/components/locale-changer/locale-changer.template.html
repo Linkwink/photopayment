@@ -1,0 +1,19 @@
+<md-menu md-position-mode="left bottom">
+    <md-button ng-click="$mdMenu.open()" class="locale-button">
+        <div layout-align="center center" layout="row">
+            <span>{{$ctrl.model.currentLanguage}}</span>
+        </div>
+    </md-button>
+    <md-menu-content>
+        <md-menu-item class="md-indent">
+            <md-button ng-click="">
+                <span translate>UA</span>
+            </md-button>
+        </md-menu-item>
+        <md-menu-item class="md-indent">
+            <md-button ng-click="">
+                <span translate>RU</span>
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>

@@ -12,12 +12,13 @@
             controller: GreetingsController,
         });
 
+    GreetingsController.$inject = ['userModel'];
 
-    function GreetingsController() {
+    function GreetingsController(userModel) {
         let vm = this;
 
         vm.model = {
-
+            user: userModel.getUser()
         }
 
     }

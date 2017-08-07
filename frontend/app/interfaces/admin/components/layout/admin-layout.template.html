@@ -1,1 +1,8 @@
-<h1>app admin layout</h1>
+<div style="height: 100%" layout="row" flex>
+    <app-sidenav menu-list="$ctrl.menu.menu"></app-sidenav>
+    <div layout="column" flex>
+        <app-toolbar></app-toolbar>
+        <ui-view class="anim-in-out anim-fade" data-anim-speed="500"></ui-view>
+        <app-right-bar></app-right-bar>
+    </div>
+</div>

@@ -1,18 +1,17 @@
 <md-sidenav
-        md-colors="{'background': 'default-primary-50'}"
+        md-colors="{'background': 'grey-A100'}"
         class="md-sidenav-left app-sidenav"
         md-is-locked-open="$ctrl.model.sidenavOpen"
         md-whiteframe="3">
-
     <md-toolbar class="md-primary md-hue-2">
         <h1 class="md-toolbar-tools">{{$ctrl.model.appName}}</h1>
     </md-toolbar>
     <md-content>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-click="null">
-                <md-icon  md-font-set="material-icons">home</md-icon>
+            <md-list-item class="md-3-line" ng-click="null" ng-repeat="menuItem in $ctrl.menuList" ui-sref="{{menuItem.href}}" ui-sref-active="active">
+                <md-icon  md-font-set="material-icons">{{menuItem.icon}}</md-icon>
                 <div class="md-list-item-text" layout="column">
-                    <span>Главная</span>
+                    <span>{{menuItem.title}}</span>
                 </div>
             </md-list-item>
         </md-list>

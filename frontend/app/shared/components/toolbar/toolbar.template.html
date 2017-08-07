@@ -1,8 +1,15 @@
-<md-toolbar md-colors="{'background': 'default-primary-50'}" class="md-whiteframe-1dp" flex>
+<md-toolbar md-colors="{background: 'grey-A100'}" class="md-whiteframe-1dp app-toolbar" flex>
     <div layout="row" layout-align="start center">
-        <div layout="row" layout-align="start center">
+        <div layout="row" layout-align="start center" style="flex:1">
             <app-shortcut></app-shortcut>
             <div class="toolbar-separator"></div>
+        </div>
+        <div layout="row" layout-align="start center">
+            <app-user-info></app-user-info>
+            <div class="toolbar-separator"></div>
+            <app-locale-changer></app-locale-changer>
+            <div class="toolbar-separator"></div>
+            <app-right-bar-opener></app-right-bar-opener>
         </div>
     </div>
 

@@ -8,8 +8,11 @@
     angular
         .module("app")
         .component("appSidenav", {
-            templateUrl: "app/shared/components/sidenav/sidenav.template.html",
-            controller: SidenavController
+            templateUrl: "app/shared/components/sidenav-menu/sidenav-menu.template.html",
+            controller: SidenavController,
+            bindings: {
+                menuList: '<'
+            }
         });
 
     SidenavController.$inject = ['appInfo'];

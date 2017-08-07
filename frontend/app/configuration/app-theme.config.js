@@ -15,7 +15,7 @@
         $mdThemingProvider.theme('default')
             .primaryPalette('blue-grey')
             .accentPalette('grey')
-            .backgroundPalette('blue-grey');
+            .backgroundPalette('grey');
 
     }
 

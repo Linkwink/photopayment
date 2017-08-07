@@ -7,13 +7,59 @@ body {
     border-radius: 50%;
   }
 
+  .font-weight-300 {
+    font-weight: 300;
+  }
+
+  app-sidenav {
+    z-index: 999;
+  }
+
+
+
   .app-sidenav {
     min-height: 100%;
-    z-index: 60;
     position: absolute;
     background: #fff;
     box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
   }
+
+  .app-sidenav  .active {
+    background: #afe6ff;
+  }
+
+  .app-toolbar {
+    app-user-info, app-user-info > md-menu-bar, app-user-info > md-menu, app-user-info > button  {
+      min-height: 64px;
+    }
+    .avatar {
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 8px 0 0;
+      border-radius: 50%;
+      font-size: 17px;
+      font-weight: 500;
+      text-align: center;
+      color: #FFF;
+    }
+
+    .user-button, .locale-button, .rightbar-button {
+      margin: 0;
+      padding: 0 16px;
+      height: 64px;
+      text-transform: none;
+      text-align: center;
+      color: #383c48;
+    }
+
+    .menu-icons {
+      width: 24px;
+    }
+
+  }
+
 
   .toolbar-separator {
     height: 64px;
@@ -33,8 +79,38 @@ body {
     max-height: 160px;
     padding-bottom: 0;
     background-color: rgb(3,155,229);
-    background-image: url(./assets/img/backgrounds/header-bg.png);
+    background-image: url(../img/backgrounds/header-bg.png);
     background-size: cover;
     color: rgba(255,255,255,1);
   }
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+[ui-view].ng-enter {
+  -webkit-animation: slideInRight 0.5s;
+  animation: slideInRight 0.5s;
+}
+
+/*[ui-view].ng-enter-active {}*/
+
+[ui-view].ng-leave {
+  -webkit-animation: slideOutLeft 0.5s;
+  animation: slideOutLeft 0.5s;
+}
+
+/*[ui-view].ng-leave-active {}*/
+
+[ui-view].ng-enter.back {
+  -webkit-animation: slideInLeft 0.5s;
+  animation: slideInLeft 0.5s;
+}
+
+[ui-view].ng-leave.back {
+  -webkit-animation: slideOutRight 0.5s;
+  animation: slideOutRight 0.5s;
 }

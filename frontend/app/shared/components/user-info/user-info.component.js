@@ -16,7 +16,7 @@
 
     function UserInfoController(userModel) {
         let vm = this;
-
+        console.log(true);
         vm.model = {
             user: userModel.getUser()
         }

@@ -50,18 +50,36 @@
                 url: '/welcome',
                 component: 'welcome',
             })
+            // ------------ ADMINISTRATOR STATES -------------------
             .state('app.administrator', {
                 url: '/administrator',
                 abstract: true,
-                template: '<ui-view></ui-view>',
+                component: 'appAdminLayout',
                 data: {
                     roleRequired: role.admin
                 }
             })
             .state('app.administrator.layout', {
                 url: '/',
-                component: 'appAdminLayout'
+                component: 'appDashboard'
             })
+            .state('app.administrator.indicativeSettings', {
+                url: '/indicative-settings',
+                component: 'appIndicativeSettings'
+            })
+            .state('app.administrator.taskManager', {
+                url: '/task-manager',
+                component: 'appTaskManager'
+            })
+            .state('app.administrator.userManager', {
+                url: '/user-manager',
+                component: 'appUserManager'
+            })
+            .state('app.administrator.serviceManager', {
+                url: '/service-manager',
+                component: 'appServiceManager'
+            })
+            // ------------ ACCOUNTANT STATES -------------------
             .state('app.accountant', {
                 url: '/accountant',
                 abstract: true,
@@ -70,6 +88,7 @@
                     roleRequired: role.accountant
                 }
             })
+            // ------------ MODERATOR STATES -------------------
             .state('app.moderator', {
                 url: '/moderator',
                 abstract: true,
@@ -82,6 +101,7 @@
                 url: '/',
                 component: 'appModeratorLayout'
             })
+            // ------------ MANAGER STATES -------------------
             .state('app.manager', {
                 url: '/manager',
                 abstract: true,
@@ -121,7 +141,6 @@
             let userModel = trans.injector().get('userModel'),
                 user = userModel.getUser(),
                 target = trans.$to();
-
             if (user.roles.includes(target.data.roleRequired)) {
                 return true;
             } else {
@@ -132,7 +151,6 @@
 
         $transitions.onBefore({to: pathAuthMatcher}, function (trans) {
             let authorization = trans.injector().get('authorization');
-
             return authorization
                 .isAuthorized()
                 .then((isAuthorized) => {

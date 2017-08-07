@@ -16,8 +16,6 @@
 
     function AppAboutController() {
         let vm = this;
-
-        console.log(true)
     }
 
 })();
