@@ -2,6 +2,8 @@ package ua.com.pb.photopay.infrastructure.exceptions;
 
 import java.util.List;
 
+import static ua.com.pb.photopay.infrastructure.constants.Constants.Error.INVALID_DATA;
+
 /**
  * Created by dn110592kvo on 23.05.2017.
  */
@@ -10,7 +12,7 @@ public class InvalidDataException extends Exception {
     /**
      * unique code of such error
      */
-    public final static int CODE = 4004;
+    public final static int CODE = INVALID_DATA;
     /**
      * Entity that caused exception
      */

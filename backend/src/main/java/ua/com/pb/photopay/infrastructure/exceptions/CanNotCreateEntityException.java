@@ -1,5 +1,7 @@
 package ua.com.pb.photopay.infrastructure.exceptions;
 
+import static ua.com.pb.photopay.infrastructure.constants.Constants.Error.CANNOT_CREATE_ENTITY;
+
 /**
  * Created by dn110592kvo on 24.05.2017.
  */
@@ -7,7 +9,7 @@ public class CanNotCreateEntityException extends Exception {
     /**
      * unique code of such error
      */
-    public final static int CODE = 4001;
+    public final static int CODE = CANNOT_CREATE_ENTITY;
     /**
      * Entity that caused exception
      */

@@ -26,6 +26,9 @@ public class ServiceType {
     @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER, targetEntity = AuxiliaryField.class)
     private Set<AuxiliaryField> auxiliaryFields;
 
+    @ManyToOne
+    private ServiceGroup serviceGroup;
+
     /**
      * Service type id (trash service - 1226 ... )
      */
@@ -38,6 +41,21 @@ public class ServiceType {
         this.name = name;
         this.auxiliaryFields = auxiliaryFields;
         this.serviceId = serviceId;
+    }
+
+    public ServiceType(String name, Set<AuxiliaryField> auxiliaryFields, ServiceGroup serviceGroup, int serviceId) {
+        this.name = name;
+        this.auxiliaryFields = auxiliaryFields;
+        this.serviceGroup = serviceGroup;
+        this.serviceId = serviceId;
+    }
+
+    public ServiceGroup getServiceGroup() {
+        return serviceGroup;
+    }
+
+    public void setServiceGroup(ServiceGroup serviceGroup) {
+        this.serviceGroup = serviceGroup;
     }
 
     public int getId() {

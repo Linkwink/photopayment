@@ -3,5 +3,5 @@
  */
 ;(function () {
     'use strict';
-    angular.module("app", ['ui.router', 'ngResource', 'ngMaterial', 'ngMessages', 'ngAnimate','momentJS','ngCookies', 'anim-in-out']);
+    angular.module("app", ['ui.router', 'ngResource', 'ngMaterial', 'ngMessages', 'ngAnimate','momentJS','ngCookies', 'anim-in-out', 'lfNgMdFileInput']);
 })();

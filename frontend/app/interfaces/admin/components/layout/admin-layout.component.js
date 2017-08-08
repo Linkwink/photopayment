@@ -22,7 +22,7 @@
             { order: 0, title: 'Настройка индикатива', href: 'app.administrator.indicativeSettings', icon: 'attach_money'},
             { order: 1, title: 'Управление заявками', href: 'app.administrator.taskManager', icon: 'assignment'},
             { order: 2, title: 'Управление пользователями', href: 'app.administrator.userManager', icon: 'people'},
-            { order: 3, title: 'Настройка типов услуг', href: 'app.administrator.serviceManager', icon: 'build'}
+            { order: 3, title: 'Настройка типов услуг', href: 'app.administrator.serviceManager.layout', icon: 'build'}
         ];
 
 

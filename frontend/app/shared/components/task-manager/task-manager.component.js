@@ -12,9 +12,9 @@
             controller: TaskManagerController
         });
 
-    TaskManagerController.$inject = [];
+    TaskManagerController.$inject = ['$rootScope'];
 
-    function TaskManagerController() {
+    function TaskManagerController($rootScope) {
         let vm = this;
 
         vm.model = {

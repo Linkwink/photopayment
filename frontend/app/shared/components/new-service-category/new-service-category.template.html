@@ -1,0 +1,24 @@
+<div class="anim-slide-below" style="position: absolute;">
+    <md-content class="md-padding md-no-scroll" layout="column">
+        <h1 class="md-headline zero-margin">Создание новой категории услуг</h1>
+        <form name="newGroupForm" layout="column" novalidate>
+            <md-input-container flex="20" style="margin-top: 45px">
+                <label translate>Название категории</label>
+                <input type="text" ng-model="$ctrl.model.newCategory.name" name="categoryName" minlength="5" required md-maxlength="30" ng-pattern="/^\S[a-zA-Zа-яА-Я0-9]*/">
+                <div ng-messages="newGroupForm.categoryName.$error" >
+                    <div ng-message="required" translate>Поле обязательно к заполнению</div>
+                    <div ng-message="md-maxlength" translate>Название должно быть от 5 до 30 символов</div>
+                    <div ng-message="minlength" translate>Название должно быть от 5 до 20 символов</div>
+                </div>
+            </md-input-container>
+            <lf-ng-md-file-input name="avatar" lf-files='$ctrl.model.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для категории"> </lf-ng-md-file-input>
+            <div ng-messages="newGroupForm.avatar.$error" >
+                <div ng-message="required" translate>Поле обязательное</div>
+                <div ng-message="mimetype">Файл должен быть изображением</div>
+                <div ng-message="filesize">Файл слишком большой. Макс. размер - 25КВ</div>
+            </div>
+        </form>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newGroupForm.$valid" style="margin-top: 45px">Создать категорию</md-button>
+
+    </md-content>
+</div>

@@ -26,6 +26,7 @@
     "angular-ui-router": "^1.0.3",
     "angular-cookies": "^1.6.5",
     "moment": "^2.18.1",
-    "angular-ui-router-anim-in-out": "^1.0.2"
+    "angular-ui-router-anim-in-out": "^1.0.2",
+    "lf-ng-md-file-input": "^1.5.2"
   }
 }

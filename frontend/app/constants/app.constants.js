@@ -11,8 +11,7 @@
     };
 
     const apiPath = {
-      root : 'http://localhost:8080',
-      apiPrefix: '/api/v1',
+      root : 'http://localhost:8080'
     };
 
     const role = {

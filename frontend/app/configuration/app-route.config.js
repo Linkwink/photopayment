@@ -75,9 +75,24 @@
                 url: '/user-manager',
                 component: 'appUserManager'
             })
+            // ------------ ADMINISTRATOR - SERVICE MANAGER STATES -------------------
             .state('app.administrator.serviceManager', {
+                abstract: true,
                 url: '/service-manager',
                 component: 'appServiceManager'
+            })
+            .state('app.administrator.serviceManager.layout', {
+                url: '/',
+                component: 'appServiceCategoryList'
+            })
+            .state('app.administrator.serviceManager.new', {
+                url: '/new',
+                abstract: true,
+                template: '<ui-view></ui-view>',
+            })
+            .state('app.administrator.serviceManager.new.serviceCategory', {
+                url: '/category',
+                component: 'appNewServiceCategory'
             })
             // ------------ ACCOUNTANT STATES -------------------
             .state('app.accountant', {

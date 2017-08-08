@@ -1,0 +1,9 @@
+<div class="anim-slide-below" style="position: absolute; width: 100%" >
+    <md-content class="md-padding md-no-scroll">
+        <h1 class="md-headline zero-margin md-padding">Выберите категорию услуг</h1>
+        <div class="md-padding" ng-if="!$ctrl.model.categories.length">
+            <p>Категории не найдены.</p>
+            <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.serviceManager.new.serviceCategory">Создать</md-button>
+        </div>
+    </md-content>
+</div>

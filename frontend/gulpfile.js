@@ -34,7 +34,7 @@ const path = {
     clean: './dist'
 };
 
-gulp.task('build', (callback) => runSequence( 'sass','generate-templates', 'pre_build', callback));
+gulp.task('build', (callback) => runSequence( 'sass','generate-templates', 'pre_build', 'minify-img', callback));
 
 gulp.task('browser', () =>
     browserSync.init({
