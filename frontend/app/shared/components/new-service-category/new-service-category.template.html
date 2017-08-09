@@ -18,7 +18,7 @@
                 <div ng-message="filesize">Файл слишком большой. Макс. размер - 25КВ</div>
             </div>
         </form>
-        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newGroupForm.$valid" style="margin-top: 45px">Создать категорию</md-button>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newGroupForm.$valid" style="margin-top: 45px" ng-click="$ctrl.actions.create()">Создать категорию</md-button>
 
     </md-content>
 </div>

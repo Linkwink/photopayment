@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.springframework.boot:spring-boot-starter-websocket:2.0.0.BUILD-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-websocket/2.0.0.BUILD-SNAPSHOT/a4e0a214f0493cf91afde73ab8ecfb87f2c740a4/spring-boot-starter-websocket-2.0.0.BUILD-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-websocket/2.0.0.BUILD-SNAPSHOT/df74f2519d3b5f6fc9b2b8fc3145749958aa8007/spring-boot-starter-websocket-2.0.0.BUILD-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-websocket/2.0.0.BUILD-SNAPSHOT/9a4cf7766db5beac1ff8a2885ffc1e9b7ba45c3d/spring-boot-starter-websocket-2.0.0.BUILD-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-websocket/2.0.0.BUILD-SNAPSHOT/85ccb19ed6234f6bdf541a3754c6678625715cfa/spring-boot-starter-websocket-2.0.0.BUILD-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

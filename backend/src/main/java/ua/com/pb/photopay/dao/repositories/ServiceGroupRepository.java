@@ -8,4 +8,6 @@ import ua.com.pb.photopay.infrastructure.models.ServiceGroup;
  */
 public interface ServiceGroupRepository extends JpaRepository<ServiceGroup, Integer>{
     ServiceGroup findByName(String name);
+    ServiceGroup findByFileHash(String fileHash);
+
 }

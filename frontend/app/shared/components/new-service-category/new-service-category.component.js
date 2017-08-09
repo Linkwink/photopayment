@@ -21,6 +21,18 @@
             newCategory : serviceGroupModel.create(),
             file: null
         };
+
+        vm.actions = {
+            create: create
+        };
+
+        function create() {
+            let file = vm.model.file.shift();
+            if (file) {
+                file = file.lfFile;
+            }
+            serviceGroupModel.save(vm.model.newCategory, file);
+        }
     }
 
 })();

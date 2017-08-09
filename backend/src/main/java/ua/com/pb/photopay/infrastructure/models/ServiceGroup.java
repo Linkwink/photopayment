@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "service_group")
-public class ServiceGroup implements BaseModel {
+public class ServiceGroup extends ImageHolder implements BaseModel {
     /**
      * Unique id
      */
@@ -23,9 +23,6 @@ public class ServiceGroup implements BaseModel {
     @Column(nullable = false)
     private String name;
 
-    private String avatarPath;
-
-
     public ServiceGroup() {
     }
 
@@ -33,12 +30,9 @@ public class ServiceGroup implements BaseModel {
         this.name = name;
     }
 
-    public String getAvatarPath() {
-        return avatarPath;
-    }
-
-    public void setAvatarPath(String avatarPath) {
-        this.avatarPath = avatarPath;
+    public ServiceGroup(String filePath, String fileHash, String name) {
+        super(filePath, fileHash);
+        this.name = name;
     }
 
     public int getId() {

@@ -37,7 +37,8 @@ public class PrincipialExtractor extends FixedPrincipalExtractor {
                 if (isExistKey(PRINCIPAL_EMAIL, e.getKey())) newUser.setEmail((String) e.getValue());
                 if (isExistKey(PRINCIPAL_PICTURE, e.getKey())) newUser.setPicture((String) e.getValue());
             });
-            userService.makeGuest(newUser);
+            userService.makeAdmin(newUser);
+//            userService.makeGuest(newUser);
             return newUser;
         }
         return user;

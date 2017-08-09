@@ -37,6 +37,12 @@ jwt:
   secret: SrP1vf_aEn23vqMbqEsvzS
   cookie: a_t
 
+application:
+  files:
+    root: photopay/files
+    user: users
+    resources: resources
+
 
 google:
   oauth2:

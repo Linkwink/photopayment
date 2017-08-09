@@ -10,9 +10,8 @@
     configure.$inject = ['$httpProvider'];
 
     function configure($httpProvider) {
-        // $httpProvider.interceptors.push('httpAuth');
         //Add to allow uses cookies with CORS
-        console.log(true);
         $httpProvider.defaults.withCredentials = true;
+        $httpProvider.interceptors.push('XSRFInterceptor');
     }
 })();

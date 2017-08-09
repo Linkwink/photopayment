@@ -28,7 +28,7 @@
                 return $resource(url,  { id: "@id" }, {
                     send: {
                         method: "POST",
-                        transformRequest: angular.identity,
+                        transformRequest: (data) => data,
                         headers: { 'Content-Type': undefined }
                     }
                 });

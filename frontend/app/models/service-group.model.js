@@ -11,18 +11,19 @@
 
     serviceGroupModel.$inject = ['$resource', 'PostFile', 'apiPath'];
 
-    function serviceGroupModel($resource, apiPath) {
+    function serviceGroupModel($resource, PostFile, apiPath) {
 
 
         function create() {
             return {
                 id : null,
-                name: null
+                name: null,
+                avatarPath: null
             }
         }
 
         function get() {
-
+cd
         }
 
         function getAll() {
@@ -32,10 +33,12 @@
         function save(newGroup, file) {
             let formData = new FormData();
             if (file) {
-                formData.append("avatar", file);
+                formData.append('avatar', file);
             }
+            formData.append('name', newGroup.name);
+            formData.append('avatarPath', newGroup.avatarPath);
             PostFile.setUrl(`${apiPath.root}/category/add`);
-            return PostFile.withFile().send(newGroup, formData);
+            return PostFile.withFile().send({}, formData);
         }
 
         return {
