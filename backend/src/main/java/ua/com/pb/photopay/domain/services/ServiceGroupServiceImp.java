@@ -14,11 +14,15 @@ import ua.com.pb.photopay.domain.utils.normalizer.NameNormalizer;
 import ua.com.pb.photopay.domain.utils.validator.Validator;
 import ua.com.pb.photopay.infrastructure.domain.ServiceGroupService;
 import ua.com.pb.photopay.infrastructure.exceptions.*;
+import ua.com.pb.photopay.infrastructure.mappers.BaseModelMapper;
+import ua.com.pb.photopay.infrastructure.mappers.ServiceGroupMapper;
 import ua.com.pb.photopay.infrastructure.models.ServiceGroup;
 import ua.com.pb.photopay.infrastructure.viewmodels.serviceGroup.ServiceGroupForSave;
 import ua.com.pb.photopay.infrastructure.viewmodels.serviceGroup.ServiceGroupForView;
 
+import javax.activation.FileTypeMap;
 import javax.servlet.ServletContext;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,6 +31,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by dn110592kvo on 08.08.2017.
@@ -77,7 +82,7 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
                         if (!Files.exists(dir)) {
                             Files.createDirectories(dir);
                         }
-                        Path path = dir.resolve(file.getName() + String.valueOf(new Date().getTime()));
+                        Path path = dir.resolve(file.getName() + String.valueOf(new Date().getTime())).toAbsolutePath();
                         Files.copy(file.getInputStream(), path);
                         newGroup.setFilePath(path.toString());
                         newGroup.setFileHash(HashGenerator.getHash(file.getOriginalFilename()));
@@ -99,13 +104,11 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
         if (hash != null) {
             ServiceGroup group = repository.findByFileHash(hash);
             if (group != null) {
-
-                ClassPathResource image = new ClassPathResource(group.getFilePath());
-                byte[] bytes = IOUtils.toByteArray(image.getInputStream());
+                File file = new File(group.getFilePath());
                 return ResponseEntity
                         .ok()
-                        .contentType(MediaType.IMAGE_JPEG)
-                        .body(bytes);
+                        .contentType(MediaType.valueOf(FileTypeMap.getDefaultFileTypeMap().getContentType(file)))
+                        .body(Files.readAllBytes(file.toPath()));
             }
 
         }
@@ -119,7 +122,7 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
 
     @Override
     public List<ServiceGroupForView> findAll() {
-        return null;
+        return repository.findAll().stream().map(s -> ServiceGroupMapper.mapView(s)).collect(Collectors.toList());
     }
 
     @Override

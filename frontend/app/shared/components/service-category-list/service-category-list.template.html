@@ -6,4 +6,11 @@
             <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.serviceManager.new.serviceCategory">Создать</md-button>
         </div>
     </md-content>
+    <div ng-if="$ctrl.model.categories.length">
+        <md-card ng-repeat="category in $ctrl.model.categories">
+            <p>{{category.name}}</p>
+            <p>{{$ctrl.model.api}}</p>
+            <img ng-src="{{$ctrl.model.api + category.avatar}}" width="50" height="50">
+        </md-card>
+    </div>
 </div>
