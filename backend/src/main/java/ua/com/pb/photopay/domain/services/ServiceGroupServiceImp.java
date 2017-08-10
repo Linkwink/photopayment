@@ -1,15 +1,19 @@
 package ua.com.pb.photopay.domain.services;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.com.pb.photopay.config.FilePathConfig;
+import ua.com.pb.photopay.config.ImageConvertConfig;
 import ua.com.pb.photopay.dao.repositories.ServiceGroupRepository;
 import ua.com.pb.photopay.domain.utils.hashizer.HashGenerator;
+import ua.com.pb.photopay.domain.utils.imageconverter.ImageConverter;
 import ua.com.pb.photopay.domain.utils.normalizer.NameNormalizer;
 import ua.com.pb.photopay.domain.utils.validator.Validator;
 import ua.com.pb.photopay.infrastructure.domain.ServiceGroupService;
@@ -31,7 +35,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  * Created by dn110592kvo on 08.08.2017.
@@ -48,6 +55,10 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
     @Autowired
     private ServletContext servletContext;
 
+    @Autowired
+    private ImageConvertConfig imageConvertConfig;
+
+
     @Override
     public int save(ServiceGroupForSave serviceGroup, MultipartFile file) throws EntityAlreadyExistsException, InvalidDataException {
         if (file != null && !file.isEmpty()) {
@@ -57,7 +68,7 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
                 String ext = "";
                 String imageMime = "image/jpeg, image/png";
                 String fileMime = file.getContentType().toLowerCase().trim();
-                String resourcesPath = filePathConfig.getResourcesPath();
+                int serviceGroupAvatarSize = imageConvertConfig.getCategoryGroup();
 
                 if (imageMime.contains(fileMime)) {
 
@@ -78,14 +89,20 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
                     }
 
                     try {
-                        Path dir = Paths.get(resourcesPath);
+                        ImageConverter imageConverter = new ImageConverter(serviceGroupAvatarSize);
+
+                        Path dir = Paths.get(getResourcePath());
                         if (!Files.exists(dir)) {
                             Files.createDirectories(dir);
                         }
-                        Path path = dir.resolve(file.getName() + String.valueOf(new Date().getTime())).toAbsolutePath();
-                        Files.copy(file.getInputStream(), path);
-                        newGroup.setFilePath(path.toString());
-                        newGroup.setFileHash(HashGenerator.getHash(file.getOriginalFilename()));
+
+                        Path path = imageConverter.apply(file.getInputStream());
+
+                        if (path != null) {
+                           path = Files.move(path, dir.resolve(path.getFileName()), REPLACE_EXISTING );
+                        }
+                        newGroup.setFilePath( path.toAbsolutePath().toString());
+                        newGroup.setFileHash(FilenameUtils.getBaseName(path.getFileName().toString()));
                         return repository.save(newGroup).getId();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -102,16 +119,16 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
     @Override
     public ResponseEntity<byte[]> getAvatar(String hash) throws IOException {
         if (hash != null) {
-            ServiceGroup group = repository.findByFileHash(hash);
-            if (group != null) {
-                File file = new File(group.getFilePath());
+            Path dir = Paths.get(String.format("%s/%s.PNG", getResourcePath(), hash));
+                File file = new File(dir.toAbsolutePath().toString());
                 return ResponseEntity
                         .ok()
-                        .contentType(MediaType.valueOf(FileTypeMap.getDefaultFileTypeMap().getContentType(file)))
+                        .lastModified(file.lastModified())
+                        .header("max-age", "84600")
+                        .cacheControl(CacheControl.maxAge(30, TimeUnit.HOURS).cachePublic())
+                        .contentType(MediaType.IMAGE_JPEG)
                         .body(Files.readAllBytes(file.toPath()));
             }
-
-        }
         return null;
     }
 
@@ -133,5 +150,9 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
     @Override
     public void delete(Integer integer) {
 
+    }
+
+    private String getResourcePath() {
+        return String.format("%s/%s",filePathConfig.getResourcesPath(), ServiceGroup.class.getSimpleName());
     }
 }

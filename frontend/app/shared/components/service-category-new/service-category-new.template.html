@@ -1,5 +1,5 @@
-<div class="anim-slide-below" style="position: absolute;">
-    <md-content class="md-padding md-no-scroll" layout="column">
+<div class="anim-slide-below absolute-width">
+    <md-content class="md-padding md-no-scroll" layout="column" flex="35">
         <h1 class="md-headline zero-margin">Создание новой категории услуг</h1>
         <form name="newGroupForm" layout="column" novalidate>
             <md-input-container flex="20" style="margin-top: 45px">
@@ -19,6 +19,6 @@
             </div>
         </form>
         <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newGroupForm.$valid" style="margin-top: 45px" ng-click="$ctrl.actions.create()">Создать категорию</md-button>
-
+        <md-button class="md-raised zero-margin md-primary md-hue-2" style="margin-top: 15px" ui-sref="app.administrator.serviceManager.layout">Отмена</md-button>
     </md-content>
 </div>

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by dn110592kvo on 09.08.2017.
  */
 @Component
-@ConfigurationProperties("application.files")
+@ConfigurationProperties("application.files.path")
 public class FilePathConfig {
     private String root;
     private String user;

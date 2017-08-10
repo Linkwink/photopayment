@@ -4,6 +4,35 @@ body {
   min-width: 100%;
   overflow: hidden;
 
+  app-sidenav {
+    z-index: 999;
+  }
+
+  .absolute-width {
+    position: absolute;
+    width: 100%;
+  }
+
+  .category-blocks {
+    cursor: pointer;
+    max-height: 110px;
+    height: 110px;
+    transform: perspective(1px) translateZ(0);
+    transition-duration: 0.5s;
+    transition-property: color, background-color;
+    word-wrap: break-word;
+  }
+
+  .category-blocks:hover {
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-color: #208abe;
+    color: white;
+  }
+
   .img-round {
     border-radius: 50%;
   }
@@ -16,8 +45,15 @@ body {
     font-weight: 300;
   }
 
-  app-sidenav {
-    z-index: 999;
+  .fixed-bottom {
+
+  }
+
+  .service-category-image {
+    height: 53px;
+    width: 84px;
+    max-width: 84px;
+    margin: 0px auto;
   }
 
   .create-category-butt {

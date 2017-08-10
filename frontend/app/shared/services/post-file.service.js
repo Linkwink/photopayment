@@ -25,7 +25,7 @@
 
         function withFile() {
             if (url) {
-                return $resource(url,  { id: "@id" }, {
+                return $resource(url,  { id: '@id' }, {
                     send: {
                         method: "POST",
                         transformRequest: (data) => data,

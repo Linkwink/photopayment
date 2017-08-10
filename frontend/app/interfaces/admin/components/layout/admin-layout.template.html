@@ -1,8 +1,8 @@
 <div style="height: 100%" layout="row" flex>
     <app-sidenav menu-list="$ctrl.menu.menu"></app-sidenav>
-    <div layout="column" flex>
+    <div layout="column" flex style="position: relative">
         <app-toolbar></app-toolbar>
-        <ui-view class="anim-in-out anim-fade" data-anim-speed="500"></ui-view>
+        <ui-view class="anim-in-out anim-fade" data-anim-speed="500" data-anim-sync="true" ></ui-view>
         <app-right-bar></app-right-bar>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="anim-slide-below" style="position: absolute; width: 100%" >
+<div class="anim-slide-below absolute-width">
     <md-content class="md-padding md-no-scroll">
         <h1 class="md-headline zero-margin md-padding">Выберите категорию услуг</h1>
         <div class="md-padding" ng-if="!$ctrl.model.categories.length">
@@ -7,10 +7,20 @@
         </div>
     </md-content>
     <div ng-if="$ctrl.model.categories.length">
-        <md-card ng-repeat="category in $ctrl.model.categories">
-            <p>{{category.name}}</p>
-            <p>{{$ctrl.model.api}}</p>
-            <img ng-src="{{$ctrl.model.api + category.avatar}}" width="50" height="50">
-        </md-card>
+        <div layout="row" class="md-padding" layout-wrap>
+            <md-card flex="20" ng-repeat="category in $ctrl.model.categories" class="category-blocks" >
+                <md-card-title>
+                    <md-card-title-text flex="70">
+                        <span class="md-title">{{category.name}}</span>
+                    </md-card-title-text>
+                    <md-card-title-media flex="30">
+                        <img ng-src="{{$ctrl.model.api + category.avatar}}" class="service-category-image">
+                    </md-card-title-media>
+                </md-card-title>
+            </md-card>
+        </div>
     </div>
 </div>
+<md-button ui-sref="app.administrator.serviceManager.new.serviceCategory" class="md-fab md-warn fixed-bottom md-fab-bottom-right" aria-label="New group" style="position: fixed; right: 20px; bottom: 20px;">
+    <md-icon  md-font-set="material-icons">playlist_add</md-icon>
+</md-button>

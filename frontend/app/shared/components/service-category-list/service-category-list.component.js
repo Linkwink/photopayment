@@ -21,6 +21,8 @@
             categories: serviceGroupModel.getAll(),
             api: apiPath.root
         };
+
+
     }
 
 })();

@@ -39,9 +39,14 @@ jwt:
 
 application:
   files:
-    root: photopay/files
-    user: users
-    resources: resources
+    path:
+      root: photopay/files
+      user: users
+      resources: resources
+  images:
+    convert:
+       sizes:
+          categoryGroup: 150 # sizes of avatars in px
 
 
 google:
@@ -58,5 +63,6 @@ google:
     resource:
       userInfoUri: https://www.googleapis.com/userinfo/v2/me
       preferTokenInfo: false
+
 
 

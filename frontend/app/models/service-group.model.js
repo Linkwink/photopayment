@@ -38,7 +38,7 @@ cd
             formData.append('name', newGroup.name);
             formData.append('avatarPath', newGroup.avatarPath);
             PostFile.setUrl(`${apiPath.root}/category/add`);
-            return PostFile.withFile().send({}, formData);
+            return PostFile.withFile().send({}, formData).$promise;
         }
 
         return {

@@ -5,7 +5,7 @@
 
     'use strict';
 
-    const USER_COOKIE = "c_u";
+    const USER_COOKIE = 'c_u';
 
     angular.module('app').provider('authorization', authorization);
 
