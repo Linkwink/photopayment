@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.com.pb.photopay.infrastructure.domain.BaseModelService;
 import ua.com.pb.photopay.infrastructure.domain.ServiceGroupService;
+import ua.com.pb.photopay.infrastructure.exceptions.CanNotCreateEntityException;
 import ua.com.pb.photopay.infrastructure.exceptions.EntityAlreadyExistsException;
+import ua.com.pb.photopay.infrastructure.exceptions.EntityNotFoundException;
 import ua.com.pb.photopay.infrastructure.exceptions.InvalidDataException;
 import ua.com.pb.photopay.infrastructure.models.ServiceGroup;
 import ua.com.pb.photopay.infrastructure.viewmodels.baseModel.BaseModelForView;
@@ -27,27 +29,26 @@ public class ServiceGroupController {
     @Autowired
     private ServiceGroupService service;
 
-
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
     public List<ServiceGroupForView> getAll(){
         return service.findAll();
     }
 
     @RequestMapping(value= "/add", method = RequestMethod.POST, consumes = "multipart/form-data", produces = "application/json")
-    public int save(@RequestPart("avatar") MultipartFile avatar, ServiceGroupForSave serviceGroup) throws InvalidDataException, EntityAlreadyExistsException {
+    public int save(@RequestPart("avatar") MultipartFile avatar, ServiceGroupForSave serviceGroup) throws InvalidDataException, EntityAlreadyExistsException, CanNotCreateEntityException {
         return service.save(serviceGroup, avatar);
     }
 
     @RequestMapping(value = "/avatar/{hash}", method = RequestMethod.GET)
-    @ResponseBody
     public ResponseEntity<byte[]> getAvatar(@PathVariable String hash) throws IOException {
         return service.getAvatar(hash);
     }
 
-//    @RequestMapping(value = "/{id}",  method = RequestMethod.GET, produces = "application/json")
-//    public BaseModelForView getOne(@PathVariable int id) {
-//        return service.getOne(id);
-//    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ServiceGroupForView findOne(@PathVariable int id) throws EntityNotFoundException {
+        return service.find(id);
+    }
+
 
 
 }

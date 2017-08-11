@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appRightBarOpener", {
-            templateUrl: "app/shared/components/rightbar-opener/rightbar-opener.template.html",
+        .module('app')
+        .component('appRightBarOpener', {
+            templateUrl: 'app/shared/components/rightbar-opener/rightbar-opener.template.html',
             controller: RightBarOpenerController,
         });
 

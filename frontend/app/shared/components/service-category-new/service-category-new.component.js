@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict'
 
     angular
-        .module("app")
-        .component("appNewServiceCategory", {
-            templateUrl: "app/shared/components/service-category-new/service-category-new.template.html",
+        .module('app')
+        .component('appNewServiceCategory', {
+            templateUrl: 'app/shared/components/service-category-new/service-category-new.template.html',
             controller: NewServiceCategoryController
         });
 
@@ -19,7 +19,8 @@
 
         vm.model = {
             newCategory: serviceGroupModel.create(),
-            file: null
+            file: null,
+            inProgress: false
         };
 
         vm.actions = {
@@ -27,15 +28,25 @@
         };
 
         function create() {
+            vm.model.inProgress = true;
             let file = vm.model.file.shift();
             if (file) {
                 file = file.lfFile;
             }
             serviceGroupModel.save(vm.model.newCategory, file)
                 .then(
-                    sucess => notification.show("Категория создана успешно!"),
-                    error => notification.show("Возникла ошибка при создании категории!")
-                ).then(() => $state.go("app.administrator.serviceManager.layout"))
+                    sucess => {
+                        notification.show('Категория создана успешно!');
+                        return null;
+                    },
+                    error => {
+                        notification.show('Возникла ошибка при создании категории!');
+                        return null;
+                    }
+                ).then(() => {
+                    $state.go('app.administrator.serviceManager.layout');
+                    vm.model.inProgress = false;
+                })
         }
     }
 

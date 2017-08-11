@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appRightBar", {
-            templateUrl: "app/shared/components/rightbar/rightbar.template.html",
+        .module('app')
+        .component('appRightBar', {
+            templateUrl: 'app/shared/components/rightbar/rightbar.template.html',
             controller: RightbarController,
         });
 
@@ -18,7 +18,7 @@
         let vm = this;
 
         vm.model = {
-            currentLanguage: "UA"
+            currentLanguage: 'UA'
         }
 
     }

@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appDashboard", {
-            templateUrl: "app/shared/components/dashboard/dashboard.template.html",
+        .module('app')
+        .component('appDashboard', {
+            templateUrl: 'app/shared/components/dashboard/dashboard.template.html',
             controller: DashboardController,
         });
 

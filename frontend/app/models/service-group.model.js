@@ -22,8 +22,8 @@
             }
         }
 
-        function get() {
-cd
+        function get(id) {
+            return $resource(`${apiPath.root}/category/${id}`).get();
         }
 
         function getAll() {

@@ -8,16 +8,7 @@
     </md-content>
     <div ng-if="$ctrl.model.categories.length">
         <div layout="row" class="md-padding" layout-wrap>
-            <md-card flex="20" ng-repeat="category in $ctrl.model.categories" class="category-blocks" >
-                <md-card-title>
-                    <md-card-title-text flex="70">
-                        <span class="md-title">{{category.name}}</span>
-                    </md-card-title-text>
-                    <md-card-title-media flex="30">
-                        <img ng-src="{{$ctrl.model.api + category.avatar}}" class="service-category-image">
-                    </md-card-title-media>
-                </md-card-title>
-            </md-card>
+            <app-service-category-one flex="20" flex-xs="100" flex-sm="100" flex-md="50" flex-lg="20" ng-repeat="category in $ctrl.model.categories" service-category="category" ng-click="$ctrl.actions.showDetails(category)"></app-service-category-one>
         </div>
     </div>
 </div>

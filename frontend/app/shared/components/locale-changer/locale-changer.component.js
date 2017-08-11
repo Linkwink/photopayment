@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appLocaleChanger", {
-            templateUrl: "app/shared/components/locale-changer/locale-changer.template.html",
+        .module('app')
+        .component('appLocaleChanger', {
+            templateUrl: 'app/shared/components/locale-changer/locale-changer.template.html',
             controller: LocaleChangerController,
         });
 
@@ -18,7 +18,7 @@
         let vm = this;
 
         vm.model = {
-            currentLanguage: "UA"
+            currentLanguage: 'UA'
         }
 
     }

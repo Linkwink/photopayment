@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appUserMenuTabs", {
-            templateUrl: "app/shared/components/user-menu-tabs/user-menu-tabs.template.html",
+        .module('app')
+        .component('appUserMenuTabs', {
+            templateUrl: 'app/shared/components/user-menu-tabs/user-menu-tabs.template.html',
             controller: UserMenuTabsController,
         });
 

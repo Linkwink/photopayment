@@ -8,5 +8,5 @@ INSERT INTO role_privilege (role_id, privilege_id) VALUES (4, 11), (4, 12), (4, 
 INSERT INTO role_privilege (role_id, privilege_id) VALUES (5, 18);
 INSERT INTO user_action_type (name) VALUES ('application.accounter.modified'), ('application.accounter.processed'),('application.acoounter.tookInProcessed'), ('application.acoounter.setWarning'), ('application.user.created'),('application.user.modified'), ('application.user.remove');
 INSERT INTO delivery_channel (name) VALUES ('Email'), ('Viber'), ('Sender');
-INSERT INTO auxiliary_field_type (name) VALUES ('Number'), ('String'), ('List');
+INSERT INTO auxiliary_field_type (name) VALUES ('Number'), ('String'), ('List'), ('Boolean');
 INSERT INTO application_status (name)VALUES ('NEW'), ('WAIT_FOR_PROCESS'), ('PROCESSED'), ('DEFFERED'), ('ACCOUNTER_IN_PROCESSING'), ('WAIT_FOR_ADDITION');

@@ -7,4 +7,5 @@ import ua.com.pb.photopay.infrastructure.models.ServiceType;
  * Created by dn110592kvo on 06.07.2017.
  */
 public interface ServiceTypeRepository extends JpaRepository<ServiceType, Integer> {
+    ServiceType findByName(String name);
 }

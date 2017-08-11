@@ -47,6 +47,13 @@ public class AuxiliaryField {
         this.fieldType = fieldType;
     }
 
+    public AuxiliaryField(String name, AuxiliaryFieldType fieldType, ServiceType serviceType, Application application) {
+        this.name = name;
+        this.fieldType = fieldType;
+        this.serviceType = serviceType;
+        this.application = application;
+    }
+
     public int getId() {
         return id;
     }

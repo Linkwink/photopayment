@@ -32,22 +32,17 @@ public class ServiceType {
     /**
      * Service type id (trash service - 1226 ... )
      */
-    private int serviceId;
+    private String serviceNomenklature;
+
 
     public ServiceType() {
     }
 
-    public ServiceType(String name, Set<AuxiliaryField> auxiliaryFields, int serviceId) {
-        this.name = name;
-        this.auxiliaryFields = auxiliaryFields;
-        this.serviceId = serviceId;
-    }
-
-    public ServiceType(String name, Set<AuxiliaryField> auxiliaryFields, ServiceGroup serviceGroup, int serviceId) {
+    public ServiceType(String name, Set<AuxiliaryField> auxiliaryFields, ServiceGroup serviceGroup, String serviceNomenklature) {
         this.name = name;
         this.auxiliaryFields = auxiliaryFields;
         this.serviceGroup = serviceGroup;
-        this.serviceId = serviceId;
+        this.serviceNomenklature = serviceNomenklature;
     }
 
     public ServiceGroup getServiceGroup() {
@@ -74,19 +69,19 @@ public class ServiceType {
         this.name = name;
     }
 
-    public int getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
-    }
-
     public Set<AuxiliaryField> getAuxiliaryFields() {
         return auxiliaryFields;
     }
 
     public void setAuxiliaryFields(Set<AuxiliaryField> auxiliaryFields) {
         this.auxiliaryFields = auxiliaryFields;
+    }
+
+    public String getServiceNomenklature() {
+        return serviceNomenklature;
+    }
+
+    public void setServiceNomenklature(String serviceNomenklature) {
+        this.serviceNomenklature = serviceNomenklature;
     }
 }

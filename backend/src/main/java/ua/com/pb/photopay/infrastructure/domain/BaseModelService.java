@@ -13,5 +13,5 @@ import java.util.List;
 public interface BaseModelService<T extends BaseModel> {
     List<BaseModelForView> getAll();
     int save(BaseModelForView model) throws InvalidDataException, EntityAlreadyExistsException;
-    BaseModelForView getOne(int id);
+    BaseModelForView getOne(Integer id);
 }

@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appUserManager", {
-            templateUrl: "app/shared/components/user-manager/user-manager.template.html",
+        .module('app')
+        .component('appUserManager', {
+            templateUrl: 'app/shared/components/user-manager/user-manager.template.html',
             controller: UserManagerController
         });
 

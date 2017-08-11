@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appTaskManager", {
-            templateUrl: "app/shared/components/task-manager/task-manager.template.html",
+        .module('app')
+        .component('appTaskManager', {
+            templateUrl: 'app/shared/components/task-manager/task-manager.template.html',
             controller: TaskManagerController
         });
 

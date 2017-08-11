@@ -3,24 +3,34 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appServiceCategoryList", {
-            templateUrl: "app/shared/components/service-category-list/service-category-list.template.html",
+        .module('app')
+        .component('appServiceCategoryList', {
+            templateUrl: 'app/shared/components/service-category-list/service-category-list.template.html',
             controller: ServiceCategoryListController
         });
 
-    ServiceCategoryListController.$inject = ['serviceGroupModel', 'apiPath'];
+    ServiceCategoryListController.$inject = ['$state', 'serviceGroupModel', 'apiPath'];
 
-    function ServiceCategoryListController(serviceGroupModel, apiPath) {
+    function ServiceCategoryListController($state, serviceGroupModel, apiPath) {
         let vm = this;
 
         vm.model = {
             categories: serviceGroupModel.getAll(),
             api: apiPath.root
         };
+
+        vm.actions = {
+            showDetails: showDetails
+        };
+
+        function showDetails(serviceCategory) {
+            if (serviceCategory.id) {
+                $state.go('app.administrator.serviceManager.categoryDetails', { categoryId: serviceCategory.id, serviceCategory: serviceCategory});
+            }
+        }
 
 
     }

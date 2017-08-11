@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appToolbar", {
-            templateUrl: "app/shared/components/toolbar/toolbar.template.html",
+        .module('app')
+        .component('appToolbar', {
+            templateUrl: 'app/shared/components/toolbar/toolbar.template.html',
             controller: AppToolbarController,
         });
 

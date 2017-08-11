@@ -16,6 +16,7 @@ import ua.com.pb.photopay.domain.utils.hashizer.HashGenerator;
 import ua.com.pb.photopay.domain.utils.imageconverter.ImageConverter;
 import ua.com.pb.photopay.domain.utils.normalizer.NameNormalizer;
 import ua.com.pb.photopay.domain.utils.validator.Validator;
+import ua.com.pb.photopay.infrastructure.constants.Constants;
 import ua.com.pb.photopay.infrastructure.domain.ServiceGroupService;
 import ua.com.pb.photopay.infrastructure.exceptions.*;
 import ua.com.pb.photopay.infrastructure.mappers.BaseModelMapper;
@@ -60,10 +61,9 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
 
 
     @Override
-    public int save(ServiceGroupForSave serviceGroup, MultipartFile file) throws EntityAlreadyExistsException, InvalidDataException {
-        if (file != null && !file.isEmpty()) {
-            if (serviceGroup != null) {
-                ServiceGroup newGroup = null;
+    public int save(ServiceGroupForSave serviceGroup, MultipartFile file) throws EntityAlreadyExistsException, InvalidDataException, CanNotCreateEntityException {
+        if (file != null && !file.isEmpty() && serviceGroup != null) {
+                ServiceGroup newGroup;
                 serviceGroup.setName(NameNormalizer.normalize(serviceGroup.getName()));
                 String ext = "";
                 String imageMime = "image/jpeg, image/png";
@@ -85,7 +85,7 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
                     }
 
                     if (!Validator.isValid(newGroup)) {
-                        throw new InvalidDataException(ServiceGroup.class.getSimpleName(), Arrays.asList("service group name"));
+                        throw new InvalidDataException(ServiceGroup.class.getSimpleName(), Arrays.asList("Field 'name' is incorrect"));
                     }
 
                     try {
@@ -111,9 +111,7 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
                 }
                 throw new InvalidDataException(ServiceGroup.class.getSimpleName(), Arrays.asList("file type"));
             }
-            throw new InvalidDataException(ServiceGroup.class.getSimpleName(), Arrays.asList("service group"));
-        }
-        throw new InvalidDataException(ServiceGroup.class.getSimpleName(), Arrays.asList("file"));
+        throw new CanNotCreateEntityException(ServiceGroup.class.getSimpleName());
     }
 
     @Override
@@ -133,8 +131,14 @@ public class ServiceGroupServiceImp implements ServiceGroupService {
     }
 
     @Override
-    public ServiceGroupForView find(Integer integer) throws EntityNotFoundException {
-        return null;
+    public ServiceGroupForView find(Integer id) throws EntityNotFoundException {
+        if (id != null) {
+            ServiceGroup group = repository.findById(id).get();
+            if (group != null) {
+                return ServiceGroupMapper.mapView(group);
+            }
+        }
+        throw new EntityNotFoundException(ServiceGroup.class.getSimpleName());
     }
 
     @Override

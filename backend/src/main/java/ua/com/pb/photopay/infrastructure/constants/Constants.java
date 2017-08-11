@@ -47,7 +47,10 @@ public class Constants {
 
         }
 
-
+        public static class AuxiliaryField {
+            public final static int NAME_MIN_LENGTH = 5;
+            public final static int NAME_MAX_LENGTH = 30;
+        }
     }
 
 }

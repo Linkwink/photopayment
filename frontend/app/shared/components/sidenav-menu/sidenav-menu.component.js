@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appSidenav", {
-            templateUrl: "app/shared/components/sidenav-menu/sidenav-menu.template.html",
+        .module('app')
+        .component('appSidenav', {
+            templateUrl: 'app/shared/components/sidenav-menu/sidenav-menu.template.html',
             controller: SidenavController,
             bindings: {
                 menuList: '<'

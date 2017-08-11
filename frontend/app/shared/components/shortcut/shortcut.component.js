@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appShortcut", {
-            templateUrl: "app/shared/components/shortcut/shortcut.template.html",
+        .module('app')
+        .component('appShortcut', {
+            templateUrl: 'app/shared/components/shortcut/shortcut.template.html',
             controller: ShortcutController,
         });
 

@@ -3,12 +3,12 @@
  */
 ;(function () {
 
-    "use strict";
+    'use strict';
 
     angular
-        .module("app")
-        .component("appServiceManager", {
-            templateUrl: "app/shared/components/service-manager/service-manager.template.html",
+        .module('app')
+        .component('appServiceManager', {
+            templateUrl: 'app/shared/components/service-manager/service-manager.template.html',
             controller: ServiceManagerController
         });
 

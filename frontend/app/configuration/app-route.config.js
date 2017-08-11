@@ -94,10 +94,13 @@
                 url: '/category',
                 component: 'appNewServiceCategory'
             })
-            // .state('app.administrator.serviceManager.category', {
-            //     url: '/category/:id',
-            //     component: 'appCategoryInfo'
-            // })
+            .state('app.administrator.serviceManager.categoryDetails', {
+                url: '/category/{categoryId:int}',
+                component: 'appServiceCategoryDetails',
+                params: {
+                    serviceCategory: null
+                }
+            })
 
 
             // ------------ ACCOUNTANT STATES -------------------
