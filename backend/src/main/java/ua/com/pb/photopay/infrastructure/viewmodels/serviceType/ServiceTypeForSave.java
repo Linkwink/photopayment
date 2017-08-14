@@ -16,6 +16,7 @@ public class ServiceTypeForSave implements ViewModelForSave {
     private int serviceGroupId;
     private String serviceNomenklature;
 
+
     public ServiceTypeForSave() {
     }
 

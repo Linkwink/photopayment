@@ -27,7 +27,7 @@ import java.io.IOException;
  */
 
 @RestController
-@RequestMapping( value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE )
+@RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthenticationController {
 
     @Autowired
@@ -45,17 +45,17 @@ public class AuthenticationController {
     @RequestMapping(value = "/refresh", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAuthenticationToken(HttpServletRequest request, HttpServletResponse response) {
 
-        String authToken = tokenHelper.getToken( request );
+        String authToken = tokenHelper.getToken(request);
         if (authToken != null && tokenHelper.canTokenBeRefreshed(authToken)) {
             // TODO check user password last update
             String refreshedToken = tokenHelper.refreshToken(authToken);
 
-            Cookie authCookie = new Cookie( TOKEN_COOKIE, ( refreshedToken ) );
-            authCookie.setPath( "/" );
-            authCookie.setHttpOnly( true );
-            authCookie.setMaxAge( EXPIRES_IN );
+            Cookie authCookie = new Cookie(TOKEN_COOKIE, (refreshedToken));
+            authCookie.setPath("/");
+            authCookie.setHttpOnly(true);
+            authCookie.setMaxAge(EXPIRES_IN);
             // Add cookie to response
-            response.addCookie( authCookie );
+            response.addCookie(authCookie);
 
             UserTokenState userTokenState = new UserTokenState(refreshedToken, EXPIRES_IN);
             return ResponseEntity.ok(userTokenState);

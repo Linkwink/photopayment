@@ -17,17 +17,19 @@ public class ServiceTypeForView implements ViewModelForView, ViewModelAsListItem
     private Set<AuxiliaryFieldForView> auxiliaryFields;
     private int serviceGroupId;
     private String serviceNomenklature;
+    private String avatar;
 
 
     public ServiceTypeForView() {
     }
 
-    public ServiceTypeForView(int id, String name, Set<AuxiliaryFieldForView> auxiliaryFields, int serviceGroupId, String serviceNomenklature) {
+    public ServiceTypeForView(int id, String name, Set<AuxiliaryFieldForView> auxiliaryFields, int serviceGroupId, String serviceNomenklature, String avatar) {
         this.id = id;
         this.name = name;
         this.auxiliaryFields = auxiliaryFields;
         this.serviceGroupId = serviceGroupId;
         this.serviceNomenklature = serviceNomenklature;
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -68,5 +70,13 @@ public class ServiceTypeForView implements ViewModelForView, ViewModelAsListItem
 
     public void setServiceNomenklature(String serviceNomenklature) {
         this.serviceNomenklature = serviceNomenklature;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

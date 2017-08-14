@@ -78,28 +78,34 @@
             // ------------ ADMINISTRATOR - SERVICE MANAGER STATES -------------------
             .state('app.administrator.serviceManager', {
                 abstract: true,
-                url: '/service-manager',
+                url: '/service',
                 component: 'appServiceManager'
             })
             .state('app.administrator.serviceManager.layout', {
-                url: '/',
+                url: '/categories',
                 component: 'appServiceCategoryList'
             })
-            .state('app.administrator.serviceManager.new', {
-                url: '/new',
+            .state('app.administrator.serviceManager.serviceCategory', {
+                url: '/categories',
                 abstract: true,
-                template: '<ui-view></ui-view>',
+                template: '<ui-view></ui-view>'
             })
-            .state('app.administrator.serviceManager.new.serviceCategory', {
-                url: '/category',
+            .state('app.administrator.serviceManager.serviceCategory.new', {
+                url: '/new',
                 component: 'appNewServiceCategory'
             })
             .state('app.administrator.serviceManager.categoryDetails', {
-                url: '/category/{categoryId:int}',
-                component: 'appServiceCategoryDetails',
-                params: {
-                    serviceCategory: null
-                }
+                url: '/categories/{categoryId:int}',
+                abstract: true,
+                template: '<ui-view class="anim-in-out anim-fade"></ui-view>',
+            })
+            .state('app.administrator.serviceManager.categoryDetails.layout', {
+                url: '/',
+                component: 'appServiceCategoryDetails'
+            })
+            .state('app.administrator.serviceManager.categoryDetails.new', {
+                url: '/new',
+                component: 'appNewServiceType'
             })
 
 

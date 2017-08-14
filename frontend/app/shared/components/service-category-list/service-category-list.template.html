@@ -3,7 +3,7 @@
         <h1 class="md-headline zero-margin md-padding">Выберите категорию услуг</h1>
         <div class="md-padding" ng-if="!$ctrl.model.categories.length">
             <p>Категории не найдены.</p>
-            <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.serviceManager.new.serviceCategory">Создать</md-button>
+            <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.serviceManager.serviceCategory.new">Создать</md-button>
         </div>
     </md-content>
     <div ng-if="$ctrl.model.categories.length">
@@ -12,6 +12,6 @@
         </div>
     </div>
 </div>
-<md-button ui-sref="app.administrator.serviceManager.new.serviceCategory" class="md-fab md-warn fixed-bottom md-fab-bottom-right" aria-label="New group" style="position: fixed; right: 20px; bottom: 20px;">
+<md-button ui-sref="app.administrator.serviceManager.serviceCategory.new" class="md-fab md-warn fixed-bottom md-fab-bottom-right" aria-label="New group" style="position: fixed; right: 20px; bottom: 20px;">
     <md-icon  md-font-set="material-icons">playlist_add</md-icon>
 </md-button>

@@ -1,5 +1,10 @@
 <div class="anim-slide-below absolute-width">
     <md-content class="md-padding md-no-scroll">
         <h1 class="md-headline zero-margin md-padding">Категория: {{$ctrl.model.serviceCategory.name}}</h1>
+        <div class="md-padding" ng-if="!$ctrl.model.serviceTypes.length">
+            <p>Типы услуг для категории "{{$ctrl.model.serviceCategory.name}}" не найдены!</p>
+            <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.serviceManager.categoryDetails.new">Создать</md-button>
+        </div>
     </md-content>
+
 </div>

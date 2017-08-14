@@ -16,6 +16,7 @@ public class ServiceTypeMapper {
                 serviceType.getName(),
                 serviceType.getAuxiliaryFields().stream().map(s -> AuxiliaryFieldMapper.mapView(s)).collect(Collectors.toSet()),
                 serviceType.getServiceGroup().getId(),
-                serviceType.getServiceNomenklature());
+                serviceType.getServiceNomenklature(),
+                String.format("/images/avatar/%s",  serviceType.getFileHash()));
     }
 }

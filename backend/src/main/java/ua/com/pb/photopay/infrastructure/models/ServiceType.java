@@ -9,7 +9,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "service_type")
-public class ServiceType {
+public class ServiceType extends ImageHolder {
     /**
      * Unique id
      */
@@ -23,15 +23,16 @@ public class ServiceType {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "serviceType", fetch = FetchType.EAGER, targetEntity = AuxiliaryField.class)
+    @ManyToMany
+    @JoinTable(name = "auxiliaryFields",
+            joinColumns = @JoinColumn(name = "servicetype_id", referencedColumnName = "id", table = "service_type"),
+            inverseJoinColumns = @JoinColumn(name = "auxiliaryfield_id", referencedColumnName = "id", table = "auxiliary_field"))
     private Set<AuxiliaryField> auxiliaryFields;
 
     @ManyToOne
     private ServiceGroup serviceGroup;
 
-    /**
-     * Service type id (trash service - 1226 ... )
-     */
+
     private String serviceNomenklature;
 
 
@@ -45,12 +46,12 @@ public class ServiceType {
         this.serviceNomenklature = serviceNomenklature;
     }
 
-    public ServiceGroup getServiceGroup() {
-        return serviceGroup;
-    }
-
-    public void setServiceGroup(ServiceGroup serviceGroup) {
+    public ServiceType(String filePath, String fileHash, String name, Set<AuxiliaryField> auxiliaryFields, ServiceGroup serviceGroup, String serviceNomenklature) {
+        super(filePath, fileHash);
+        this.name = name;
+        this.auxiliaryFields = auxiliaryFields;
         this.serviceGroup = serviceGroup;
+        this.serviceNomenklature = serviceNomenklature;
     }
 
     public int getId() {
@@ -77,6 +78,14 @@ public class ServiceType {
         this.auxiliaryFields = auxiliaryFields;
     }
 
+    public ServiceGroup getServiceGroup() {
+        return serviceGroup;
+    }
+
+    public void setServiceGroup(ServiceGroup serviceGroup) {
+        this.serviceGroup = serviceGroup;
+    }
+
     public String getServiceNomenklature() {
         return serviceNomenklature;
     }
@@ -84,4 +93,6 @@ public class ServiceType {
     public void setServiceNomenklature(String serviceNomenklature) {
         this.serviceNomenklature = serviceNomenklature;
     }
+
+
 }

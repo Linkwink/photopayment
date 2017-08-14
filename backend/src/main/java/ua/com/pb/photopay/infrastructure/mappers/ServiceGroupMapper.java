@@ -9,6 +9,9 @@ import ua.com.pb.photopay.infrastructure.viewmodels.serviceGroup.ServiceGroupFor
 public class ServiceGroupMapper {
 
     public static ServiceGroupForView mapView(ServiceGroup serviceGroup) {
-         return new ServiceGroupForView(serviceGroup.getId(), serviceGroup.getName(), String.format("/category/avatar/%s", serviceGroup.getFileHash()));
+         return new ServiceGroupForView(
+                 serviceGroup.getId(),
+                 serviceGroup.getName(),
+                 String.format("/images/avatar/%s", serviceGroup.getFileHash()));
     }
 }

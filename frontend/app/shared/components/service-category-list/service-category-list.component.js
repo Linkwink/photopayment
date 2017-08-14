@@ -28,7 +28,7 @@
 
         function showDetails(serviceCategory) {
             if (serviceCategory.id) {
-                $state.go('app.administrator.serviceManager.categoryDetails', { categoryId: serviceCategory.id, serviceCategory: serviceCategory});
+                $state.go('app.administrator.serviceManager.categoryDetails.layout', { categoryId: serviceCategory.id, serviceCategory: serviceCategory});
             }
         }
 

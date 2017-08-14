@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.com.pb.photopay.infrastructure.exceptions.CanNotCreateEntityException;
 import ua.com.pb.photopay.infrastructure.exceptions.EntityAlreadyExistsException;
 import ua.com.pb.photopay.infrastructure.exceptions.InvalidDataException;
+import ua.com.pb.photopay.infrastructure.models.ServiceGroup;
 import ua.com.pb.photopay.infrastructure.viewmodels.serviceGroup.ServiceGroupForSave;
 import ua.com.pb.photopay.infrastructure.viewmodels.serviceGroup.ServiceGroupForView;
 
@@ -15,5 +16,5 @@ import java.io.IOException;
  */
 public interface ServiceGroupService extends BaseService<ServiceGroupForSave, ServiceGroupForView, ServiceGroupForView, Integer> {
     int save(ServiceGroupForSave service, MultipartFile file) throws EntityAlreadyExistsException, InvalidDataException, CanNotCreateEntityException;
-    ResponseEntity<byte[]> getAvatar(String hash) throws IOException;
+    ServiceGroup find(int id);
 }

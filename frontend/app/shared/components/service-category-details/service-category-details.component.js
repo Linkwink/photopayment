@@ -12,13 +12,14 @@
             controller: ServiceCategoryDetailsController
         });
 
-    ServiceCategoryDetailsController.$inject = ['$stateParams', 'serviceGroupModel'];
+    ServiceCategoryDetailsController.$inject = ['$stateParams', 'serviceGroupModel', 'serviceTypeModel'];
 
-    function ServiceCategoryDetailsController($stateParams, serviceGroupModel) {
+    function ServiceCategoryDetailsController($stateParams, serviceGroupModel, serviceTypeModel) {
         let vm = this;
 
         vm.model = {
-            serviceCategory: $stateParams.serviceCategory || serviceGroupModel.get($stateParams.categoryId)
+            serviceCategory: $stateParams.serviceCategory || serviceGroupModel.get($stateParams.categoryId),
+            serviceTypes: serviceTypeModel.getAll($stateParams.categoryId)
         };
 
 

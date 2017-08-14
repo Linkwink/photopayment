@@ -45,6 +45,11 @@ public class AuxiliaryFieldServiceImp implements AuxiliaryFieldService {
     }
 
     @Override
+    public AuxiliaryField find(int id) {
+        return repository.findById(id).get();
+    }
+
+    @Override
     public List<AuxiliaryFieldForView> findAll() {
         return repository.findAll().stream().map(s -> AuxiliaryFieldMapper.mapView(s)).collect(Collectors.toList());
     }
@@ -84,5 +89,10 @@ public class AuxiliaryFieldServiceImp implements AuxiliaryFieldService {
     @Override
     public void delete(Integer integer) {
 
+    }
+
+    @Override
+    public boolean isExist(int id) {
+        return repository.existsById(id);
     }
 }

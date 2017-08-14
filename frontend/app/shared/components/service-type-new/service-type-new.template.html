@@ -1,0 +1,52 @@
+<div class="anim-slide-below absolute-width">
+    <md-content class="md-padding md-no-scroll" layout="column" flex="35">
+        <h1 class="md-headline zero-margin">Создание нового типа услуг</h1>
+        <form name="newServiceForm" layout="column" novalidate>
+            <md-input-container style="margin-top: 45px">
+                <label translate>Название услуги</label>
+                <input type="text" ng-model="$ctrl.model.newServiceType.name" name="serviceName" minlength="5" required md-maxlength="30" ng-pattern="/^\S[a-zA-Zа-яА-Я0-9]*/">
+                <div ng-messages="newServiceForm.serviceName.$error" >
+                    <div ng-message="required" translate>Поле обязательно к заполнению</div>
+                    <div ng-message="md-maxlength" translate>Название должно быть от 5 до 30 символов</div>
+                    <div ng-message="minlength" translate>Название должно быть от 5 до 20 символов</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label translate>Номенклатура услуги</label>
+                <input type="text" ng-model="$ctrl.model.newServiceType.name" name="nomenklature" minlength="5" required md-maxlength="10">
+                <div ng-messages="newServiceForm.nomenklature.$error" >
+                    <div ng-message="required" translate>Поле обязательно к заполнению</div>
+                    <div ng-message="md-maxlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
+                    <div ng-message="minlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
+                </div>
+            </md-input-container>
+            <md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap
+                      md-transform-chip="ctrl.transformChip($chip)"
+                      md-require-match="ctrl.autocompleteDemoRequireMatch">
+                <md-autocomplete
+                        md-selected-item="ctrl.selectedItem"
+                        md-search-text="ctrl.searchText"
+                        md-items="item in ctrl.querySearch(ctrl.searchText)"
+                        md-item-text="item.name"
+                        placeholder="Search for a vegetable">
+                    <span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>
+                      <strong>{{$chip.name}}</strong>
+                      <em>({{$chip.type}})</em>
+                    </span>
+                </md-chip-template>
+            </md-chips>
+            <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для типа услуги"> </lf-ng-md-file-input>
+            <div ng-messages="newServiceForm.avatar.$error" >
+                <div ng-message="required" translate>Поле обязательное</div>
+                <div ng-message="mimetype">Файл должен быть изображением</div>
+                <div ng-message="filesize">Файл слишком большой. Макс. размер - 25КВ</div>
+            </div>
+        </form>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newServiceForm.$valid || $ctrl.model.inProgress" style="margin-top: 45px" ng-click="$ctrl.actions.create()">Создать</md-button>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="$ctrl.model.inProgress" style="margin-top: 15px" ui-sref="app.administrator.serviceManager.layout">Отмена</md-button>
+    </md-content>
+    <app-progress-loader ng-show="$ctrl.model.inProgress"></app-progress-loader>
+</div>

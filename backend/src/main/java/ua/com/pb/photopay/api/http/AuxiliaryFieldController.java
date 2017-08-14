@@ -17,7 +17,7 @@ import java.util.List;
  * Created by dn110592kvo on 11.08.2017.
  */
 @RestController
-@RequestMapping( value = "/auxiliary-field")
+@RequestMapping(value = "/auxiliary-field")
 public class AuxiliaryFieldController {
 
     @Autowired

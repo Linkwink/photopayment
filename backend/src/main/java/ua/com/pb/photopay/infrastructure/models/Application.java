@@ -63,8 +63,8 @@ public class Application {
     /**
      * Addiditional info on application
      */
-    @OneToMany(targetEntity = AuxiliaryField.class, orphanRemoval = false, mappedBy = "application", fetch = FetchType.EAGER)
-    private Set<AuxiliaryField> addiditionalFields;
+    @OneToMany(targetEntity = ApplicationAuxiliaryField.class, orphanRemoval = true, mappedBy = "application", fetch = FetchType.EAGER)
+    private Set<ApplicationAuxiliaryField> addiditionalFields;
 
     /**
      * Agreement of application
@@ -124,7 +124,7 @@ public class Application {
     public Application() {
     }
 
-    public Application(Set<Attachment> attachments, LocalDateTime created, LocalDateTime lastModified, User creator, User accountant, LocalDateTime accountantStart, LocalDateTime accountantEnd, Set<AuxiliaryField> addiditionalFields, Agreement agreement, ApplicationStatus applicationStatus, Chat applicationChat, Note note, ServiceType serviceType, Long idPrivatDogovor, float amountOfPayment, boolean indicativeFalse, String geoLocationOnCreate) {
+    public Application(Set<Attachment> attachments, LocalDateTime created, LocalDateTime lastModified, User creator, User accountant, LocalDateTime accountantStart, LocalDateTime accountantEnd, Set<ApplicationAuxiliaryField> addiditionalFields, Agreement agreement, ApplicationStatus applicationStatus, Chat applicationChat, Note note, ServiceType serviceType, Long idPrivatDogovor, float amountOfPayment, boolean indicativeFalse, String geoLocationOnCreate) {
         this.attachments = attachments;
         this.created = created;
         this.lastModified = lastModified;
@@ -280,11 +280,11 @@ public class Application {
         this.geoLocationOnCreate = geoLocationOnCreate;
     }
 
-    public Set<AuxiliaryField> getAddiditionalFields() {
+    public Set<ApplicationAuxiliaryField> getAddiditionalFields() {
         return addiditionalFields;
     }
 
-    public void setAddiditionalFields(Set<AuxiliaryField> addiditionalFields) {
+    public void setAddiditionalFields(Set<ApplicationAuxiliaryField> addiditionalFields) {
         this.addiditionalFields = addiditionalFields;
     }
 }

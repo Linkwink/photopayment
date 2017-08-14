@@ -51,6 +51,13 @@ public class Constants {
             public final static int NAME_MIN_LENGTH = 5;
             public final static int NAME_MAX_LENGTH = 30;
         }
+
+        public static class ServiceType {
+            public final static int NAME_MIN_LENGTH = 5;
+            public final static int NAME_MAX_LENGTH = 30;
+            public final static int NOMENCLATURE_MIN_LENGTH = 5;
+            public final static int NOMENCLATURE_MAX_LENGTH = 10;
+        }
     }
 
 }

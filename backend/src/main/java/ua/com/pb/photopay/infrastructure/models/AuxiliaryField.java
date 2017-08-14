@@ -30,14 +30,6 @@ public class AuxiliaryField {
     @JoinColumn(name = "fieldtype_id", referencedColumnName = "id")
     private AuxiliaryFieldType fieldType;
 
-    @ManyToOne
-    @JoinColumn(name = "service_type_id")
-    private ServiceType serviceType;
-
-    @ManyToOne
-    @JoinColumn(name = "application_id")
-    private Application application;
-
 
     public AuxiliaryField() {
     }
@@ -45,13 +37,6 @@ public class AuxiliaryField {
     public AuxiliaryField(String name, AuxiliaryFieldType fieldType) {
         this.name = name;
         this.fieldType = fieldType;
-    }
-
-    public AuxiliaryField(String name, AuxiliaryFieldType fieldType, ServiceType serviceType, Application application) {
-        this.name = name;
-        this.fieldType = fieldType;
-        this.serviceType = serviceType;
-        this.application = application;
     }
 
     public int getId() {
