@@ -13,31 +13,14 @@
             </md-input-container>
             <md-input-container>
                 <label translate>Номенклатура услуги</label>
-                <input type="text" ng-model="$ctrl.model.newServiceType.name" name="nomenklature" minlength="5" required md-maxlength="10">
+                <input type="text" ng-model="$ctrl.model.newServiceType.serviceNomenklature" name="nomenklature" minlength="5" required md-maxlength="10">
                 <div ng-messages="newServiceForm.nomenklature.$error" >
                     <div ng-message="required" translate>Поле обязательно к заполнению</div>
                     <div ng-message="md-maxlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
                     <div ng-message="minlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
                 </div>
             </md-input-container>
-            <md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap
-                      md-transform-chip="ctrl.transformChip($chip)"
-                      md-require-match="ctrl.autocompleteDemoRequireMatch">
-                <md-autocomplete
-                        md-selected-item="ctrl.selectedItem"
-                        md-search-text="ctrl.searchText"
-                        md-items="item in ctrl.querySearch(ctrl.searchText)"
-                        md-item-text="item.name"
-                        placeholder="Search for a vegetable">
-                    <span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>
-                </md-autocomplete>
-                <md-chip-template>
-                    <span>
-                      <strong>{{$chip.name}}</strong>
-                      <em>({{$chip.type}})</em>
-                    </span>
-                </md-chip-template>
-            </md-chips>
+
             <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для типа услуги"> </lf-ng-md-file-input>
             <div ng-messages="newServiceForm.avatar.$error" >
                 <div ng-message="required" translate>Поле обязательное</div>

@@ -1,5 +1,5 @@
 /**
- * Created by Viacheslav_Khromoi on 12.08.2017.
+ * Created by dn110592kvo on 11.08.2017.
  */
 ;(function () {
 
@@ -23,6 +23,7 @@
         vm.model = {
             path: apiPath.root
         };
+
     }
 
 })();

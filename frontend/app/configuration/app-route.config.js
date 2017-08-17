@@ -19,7 +19,8 @@
 
         $locationProvider.html5Mode(true);
 
-        $urlRouterProvider.otherwise('/proxy');
+        $urlRouterProvider.otherwise('/auth');
+
 
         $stateProvider
             .state('app', {
@@ -28,8 +29,8 @@
                     authorizationRequired: true
                 }
             })
-            .state('proxy', {
-                url: '/proxy',
+            .state('auth', {
+                url: '/auth',
                 template: '<ui-view></ui-view>',
                 data: {
                     authorizationRequired: true
@@ -75,11 +76,15 @@
                 url: '/user-manager',
                 component: 'appUserManager'
             })
+            .state('app.administrator.auxFields', {
+                url: '/auxiliary-fields',
+                component: 'appAuxiliaryFieldsSettings'
+            })
             // ------------ ADMINISTRATOR - SERVICE MANAGER STATES -------------------
             .state('app.administrator.serviceManager', {
-                abstract: true,
                 url: '/service',
-                component: 'appServiceManager'
+                component: 'appServiceManager',
+                redirectTo: 'app.administrator.serviceManager.layout'
             })
             .state('app.administrator.serviceManager.layout', {
                 url: '/categories',
@@ -144,7 +149,7 @@
 
     function routeRun($transitions, role) {
 
-        $transitions.onSuccess({to: 'proxy'}, function (trans) {
+        $transitions.onSuccess({to: 'auth'}, function (trans) {
             let userModel = trans.injector().get('userModel'),
                 user = userModel.getUser(),
                 state = trans.router.stateService;
