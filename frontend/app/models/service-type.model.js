@@ -4,50 +4,29 @@
 ;(function () {
     'use strict';
 
-    angular.module('app').factory('serviceTypeModel', serviceTypeModel);
+    angular.module('app').factory('serviceType', serviceType);
 
-    serviceTypeModel.$inject = ['$resource', 'PostFile', 'apiPath'];
+    serviceType.$inject = ['$resource', 'apiPath'];
 
-    function serviceTypeModel($resource, PostFile, apiPath) {
+    function serviceType($resource, apiPath) {
 
-
-        function create() {
-            return {
-                id: null,
-                name: null,
-                auxiliaryFields: null,
-                serviceGroupId: null,
-                serviceNomenklature : null
-            }
-        }
-
-        function get(id) {
-            return $resource(`${apiPath.root}/service-type/${id}`).get();
-        }
-
-        function getAll(id) {
-            return $resource(`${apiPath.root}/service-type/all/${id}`).query();
-        }
-
-        function save(newType, file) {
-            let formData = new FormData();
-            if (file) {
-                formData.append('avatar', file);
-            }
-            formData.append('name', newType.name);
-            formData.append('auxiliaryFields', newType.auxiliaryFields);
-            formData.append('serviceGroupId', newType.serviceGroupId);
-            formData.append('serviceNomenklature', newType.serviceNomenklature);
-            PostFile.setUrl(`${apiPath.root}/service-type/add`);
-            return PostFile.withFile().send({}, formData).$promise;
-        }
-
-        return {
-            create: create,
-            get: get,
-            getAll: getAll,
-            save: save
-        }
+        let root = `${apiPath.root}/service-type`;
+        return $resource(root, {}, {
+            save: {
+                method: 'POST',
+                url: `${root}/add`,
+                headers: {'Content-Type': undefined},
+                transformRequest: (data) => {
+                    let transformed = new FormData();
+                    transformed.append('serviceType', JSON.stringify({id: null, name: data.name, auxiliaryFields: data.auxiliaryFields, serviceGroupId: data.serviceGroupId, serviceNomenklature: data.serviceNomenklature}));
+                    transformed.append('avatar', data.file.shift().lfFile);
+                    return transformed;
+                }
+            },
+            get: {method: 'GET', url: `${root}/:id`, params: {id: '@id'}},
+            getFieldTypes: {method: 'GET', url: `${root}/types/all`, isArray: true},
+            getAll: {method: 'GET', url: `${root}/all/:id`, isArray: true,  params: {id: '@id'}}
+        });
     }
 
 })();

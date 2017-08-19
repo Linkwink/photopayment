@@ -12,15 +12,14 @@
             controller: NewServiceTypeController
         });
 
-    NewServiceTypeController.$inject = ['$state', 'serviceTypeModel', 'auxiliaryFieldTypeModel', 'notification'];
+    NewServiceTypeController.$inject = ['$state', 'serviceType', 'auxiliaryField', 'notification'];
 
-    function NewServiceTypeController($state, serviceTypeModel, auxiliaryFieldTypeModel, notification) {
+    function NewServiceTypeController($state, serviceType, auxiliaryField, notification) {
         let vm = this;
 
         vm.model = {
-            newServiceType: serviceTypeModel.create(),
-            auxiliaryFieldTypes: auxiliaryFieldTypeModel.getAll(),
-            file: null,
+            newServiceType: new serviceType(),
+            auxiliaryFieldTypes: auxiliaryField.getAll(),
             inProgress: false
         };
 
@@ -30,11 +29,7 @@
 
         function create() {
             vm.model.inProgress = true;
-            let file = vm.model.file.shift();
-            if (file) {
-                file = file.lfFile;
-            }
-            serviceGroupModel.save(vm.model.newCategory, file)
+            vm.model.newServiceType.$save()
                 .then(
                     sucess => {
                         notification.show('Категория создана успешно!');
@@ -45,8 +40,8 @@
                         return null;
                     }
                 ).then(() => {
-                $state.go('app.administrator.serviceManager.layout');
                 vm.model.inProgress = false;
+                $state.go('app.administrator.serviceManager.layout');
             })
         }
     }

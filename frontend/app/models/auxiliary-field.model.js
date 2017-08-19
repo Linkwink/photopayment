@@ -4,46 +4,19 @@
 ;(function () {
     'use strict';
 
-    angular.module('app').factory('auxiliaryFieldModel', auxiliaryFieldModel);
+    angular.module('app').factory('auxiliaryField', auxiliaryField);
 
-    auxiliaryFieldModel.$inject = ['$resource', 'PostFile', 'apiPath'];
+    auxiliaryField.$inject = ['$resource', 'apiPath'];
 
-    function auxiliaryFieldModel($resource, PostFile, apiPath) {
+    function auxiliaryField($resource, apiPath) {
 
+        let root = `${apiPath.root}/auxiliary-field`;
 
-        function create() {
-            return {
-                id : null,
-                name: null,
-                avatarPath: null
-            }
-        }
-
-        function get(id) {
-            return $resource(`${apiPath.root}/service-group/${id}`).get();
-        }
-
-        function getAll() {
-            return $resource(`${apiPath.root}/service-group/all`).query();
-        }
-
-        function save(newGroup, file) {
-            let formData = new FormData();
-            if (file) {
-                formData.append('avatar', file);
-            }
-            formData.append('name', newGroup.name);
-            formData.append('avatarPath', newGroup.avatarPath);
-            PostFile.setUrl(`${apiPath.root}/service-group/add`);
-            return PostFile.withFile().send({}, formData).$promise;
-        }
-
-        return {
-            create: create,
-            get: get,
-            getAll: getAll,
-            save: save
-        }
+        return $resource(root, {}, {
+            save: { method : 'POST', url: `${root}/add`},
+            getFieldTypes: { method: 'GET', url: `${root}/types/all`, isArray: true },
+            getAll: { method: 'GET', url: `${root}/all`, isArray: true}
+        });
     }
 
 })();

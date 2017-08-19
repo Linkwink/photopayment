@@ -21,7 +21,7 @@
                 </div>
             </md-input-container>
 
-            <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для типа услуги"> </lf-ng-md-file-input>
+            <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.newServiceType.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для типа услуги"> </lf-ng-md-file-input>
             <div ng-messages="newServiceForm.avatar.$error" >
                 <div ng-message="required" translate>Поле обязательное</div>
                 <div ng-message="mimetype">Файл должен быть изображением</div>

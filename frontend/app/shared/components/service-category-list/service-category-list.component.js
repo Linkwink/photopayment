@@ -12,14 +12,13 @@
             controller: ServiceCategoryListController
         });
 
-    ServiceCategoryListController.$inject = ['$state', 'serviceGroupModel', 'apiPath'];
+    ServiceCategoryListController.$inject = ['$state', 'serviceGroup'];
 
-    function ServiceCategoryListController($state, serviceGroupModel, apiPath) {
+    function ServiceCategoryListController($state, serviceGroup) {
         let vm = this;
 
         vm.model = {
-            categories: serviceGroupModel.getAll(),
-            api: apiPath.root
+            categories: serviceGroup.getAll(),
         };
 
         vm.actions = {

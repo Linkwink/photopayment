@@ -12,13 +12,13 @@
             controller: NewServiceCategoryController
         });
 
-    NewServiceCategoryController.$inject = ['$state', 'serviceGroupModel', 'notification'];
+    NewServiceCategoryController.$inject = ['$state', 'serviceGroup', 'notification'];
 
-    function NewServiceCategoryController($state, serviceGroupModel, notification) {
+    function NewServiceCategoryController($state, serviceGroup, notification) {
         let vm = this;
 
         vm.model = {
-            newCategory: serviceGroupModel.create(),
+            newCategory: new serviceGroup(),
             file: null,
             inProgress: false
         };
@@ -29,11 +29,7 @@
 
         function create() {
             vm.model.inProgress = true;
-            let file = vm.model.file.shift();
-            if (file) {
-                file = file.lfFile;
-            }
-            serviceGroupModel.save(vm.model.newCategory, file)
+            vm.model.newCategory.$save()
                 .then(
                     sucess => {
                         notification.show('Категория создана успешно!');

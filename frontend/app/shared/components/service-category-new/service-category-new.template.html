@@ -11,7 +11,7 @@
                     <div ng-message="minlength" translate>Название должно быть от 5 до 20 символов</div>
                 </div>
             </md-input-container>
-            <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для категории"> </lf-ng-md-file-input>
+            <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.newCategory.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для категории"> </lf-ng-md-file-input>
             <div ng-messages="newGroupForm.avatar.$error" >
                 <div ng-message="required" translate>Поле обязательное</div>
                 <div ng-message="mimetype">Файл должен быть изображением</div>
@@ -22,4 +22,4 @@
         <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="$ctrl.model.inProgress" style="margin-top: 15px" ui-sref="app.administrator.serviceManager.layout">Отмена</md-button>
     </md-content>
     <app-progress-loader ng-show="$ctrl.model.inProgress"></app-progress-loader>
-</div>
+</div

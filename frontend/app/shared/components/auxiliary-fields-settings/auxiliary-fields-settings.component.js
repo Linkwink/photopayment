@@ -11,13 +11,13 @@
             controller: AuxiliaryFieldsSettingsController
         });
 
-    AuxiliaryFieldsSettingsController.$inject = [];
+    AuxiliaryFieldsSettingsController.$inject = ['auxiliaryField'];
 
-    function AuxiliaryFieldsSettingsController() {
+    function AuxiliaryFieldsSettingsController(auxiliaryField) {
         let vm = this;
 
         vm.menu = {
-
+            fields: auxiliaryField.getAll()
         }
     }
 
