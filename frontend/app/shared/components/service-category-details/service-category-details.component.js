@@ -19,7 +19,7 @@
 
         vm.model = {
             serviceCategory: $stateParams.serviceCategory || serviceGroup.get({ id :$stateParams.categoryId }),
-            serviceTypes: serviceType.getAll($stateParams.categoryId)
+            serviceTypes: serviceType.getAll({ id :$stateParams.categoryId })
         };
 
     }

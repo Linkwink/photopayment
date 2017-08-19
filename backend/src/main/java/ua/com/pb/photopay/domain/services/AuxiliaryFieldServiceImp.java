@@ -54,6 +54,7 @@ public class AuxiliaryFieldServiceImp implements AuxiliaryFieldService {
         return repository.findAll().stream().map(s -> AuxiliaryFieldMapper.mapView(s)).collect(Collectors.toList());
     }
 
+
     @Override
     public Integer save(AuxiliaryFieldForSave newEntity) throws EntityAlreadyExistsException, CanNotCreateEntityException, InvalidDataException, UsesForbiddenChannelException, EntityNotFoundException {
         if (newEntity != null) {

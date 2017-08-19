@@ -1,0 +1,32 @@
+<div class="anim-slide-below absolute-width" layout="column">
+    <md-content class="md-padding md-no-scroll">
+        <h1 class="md-headline zero-margin md-padding">Добавление/редактирование/удаление полей, необходимых для создания заявки</h1>
+        <div ng-show="$ctrl.model.fields.length > 0">
+            <md-table-container>
+                <table flex="100" md-table md-row-select ng-model="$ctrl.model.table.selected">
+                    <thead fix-head md-order="orderValue" md-head class="noselect">
+                    <tr md-row>
+                        <th md-column md-order-by="id"><span translate>ID поля</span></th>
+                        <th md-column md-order-by="name"><span translate>Название поля</span></th>
+                        <th md-column md-order-by="type.name"><span translate>Тип поля</span></th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="field" ng-repeat="field in $ctrl.model.fields | orderBy : orderValue" md-auto-select>
+                        <td md-cell>{{field.id}}</td>
+                        <td md-cell>{{field.name}}</td>
+                        <td md-cell>{{field.type.name | lowercase}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+            <div layout="row">
+                <md-table-pagination flex="90" flex-offset="5" md-label="{{$ctrl.model.table.paginationTranslate.ru}}" md-limit="$ctrl.model.table.query.limit" md-limit-options="$ctrl.model.table.tableConfig.limitOptions" md-page="$ctrl.model.table.tableConfig.query.page" md-total="{{$ctrl.model.fields.length}}" md-page-select="true" md-boundary-links="true"></md-table-pagination>
+            </div>
+        </div>
+        <div class="md-padding" ng-if="!$ctrl.model.fields.length">
+            <p>Поля не найдены</p>
+            <md-button class="md-raised zero-margin md-primary md-hue-2 create-category-butt" ui-sref="app.administrator.auxFields.new">Создать</md-button>
+        </div>
+    </md-content>
+</div>

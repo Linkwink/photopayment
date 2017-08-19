@@ -12,9 +12,9 @@
             controller: WelcomeController,
         });
 
-    WelcomeController.$inject = ['$window', '$http'];
+    WelcomeController.$inject = [];
 
-    function WelcomeController($window,$http) {
+    function WelcomeController() {
         let vm = this;
 
     }

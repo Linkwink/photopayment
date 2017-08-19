@@ -1,0 +1,28 @@
+<div class="anim-slide-below absolute-width">
+    <md-content class="md-padding md-no-scroll" layout="column" flex="35">
+        <h1 class="md-headline zero-margin">Создание нового поля заявки</h1>
+        <form name="newFieldForm" layout="column" novalidate>
+            <md-input-container style="margin-top: 45px">
+                <label translate>Название поля</label>
+                <input type="text" ng-model="$ctrl.model.auxiliaryField.name" name="fieldName" minlength="5" required md-maxlength="30" ng-pattern="/^\S[a-zA-Zа-яА-Я0-9]*/">
+                <div ng-messages="newFieldForm.fieldName.$error" >
+                    <div ng-message="required" translate>Поле обязательно к заполнению</div>
+                    <div ng-message="md-maxlength" translate>Название должно быть от 5 до 30 символов</div>
+                    <div ng-message="minlength" translate>Название должно быть от 5 до 20 символов</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label translate>Тип поля</label>
+                <md-select name="type" ng-model="$ctrl.model.auxiliaryField.fieldTypeId" name="type" required>
+                    <md-option ng-value="type.id" ng-repeat="type in $ctrl.model.fieldTypes">{{type.name}}</md-option>
+                </md-select>
+                <div ng-messages="newFieldForm.type.$error">
+                    <div ng-message="required" translate>Необходимо выбрать тип поля</div>
+                </div>
+            </md-input-container>
+        </form>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="!newFieldForm.$valid || $ctrl.model.inProgress" style="margin-top: 45px" ng-click="$ctrl.actions.create()">Создать</md-button>
+        <md-button class="md-raised zero-margin md-primary md-hue-2" ng-disabled="$ctrl.model.inProgress" style="margin-top: 15px" ui-sref="app.administrator.auxFields">Отмена</md-button>
+    </md-content>
+    <app-progress-loader ng-show="$ctrl.model.inProgress"></app-progress-loader>
+</div>

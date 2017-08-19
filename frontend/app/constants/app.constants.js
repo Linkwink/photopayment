@@ -27,6 +27,10 @@
         unauthorized : 401
     };
 
+    const tableSettings = {
+
+    };
+
     angular.module('app')
         .constant('appInfo', appInfo)
         .constant('apiPath', apiPath)

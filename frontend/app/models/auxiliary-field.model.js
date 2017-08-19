@@ -15,7 +15,8 @@
         return $resource(root, {}, {
             save: { method : 'POST', url: `${root}/add`},
             getFieldTypes: { method: 'GET', url: `${root}/types/all`, isArray: true },
-            getAll: { method: 'GET', url: `${root}/all`, isArray: true}
+            getAll: { method: 'GET', url: `${root}/all`, isArray: true},
+            search: { method: 'GET', url: `${root}/search/:pattern`, isArray: true, params: { pattern: '@pattern'}}
         });
     }
 

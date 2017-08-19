@@ -78,7 +78,16 @@
             })
             .state('app.administrator.auxFields', {
                 url: '/auxiliary-fields',
-                component: 'appAuxiliaryFieldsSettings'
+                component: 'appAuxiliaryFields',
+                redirectTo: 'app.administrator.auxFields.layout'
+            })
+            .state('app.administrator.auxFields.layout', {
+                url: '/',
+                component: 'appAuxiliaryFieldsList'
+            })
+            .state('app.administrator.auxFields.new', {
+                url: '/new',
+                component: 'appAuxiliaryFieldNew'
             })
             // ------------ ADMINISTRATOR - SERVICE MANAGER STATES -------------------
             .state('app.administrator.serviceManager', {

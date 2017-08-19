@@ -14,13 +14,17 @@
             <md-input-container>
                 <label translate>Номенклатура услуги</label>
                 <input type="text" ng-model="$ctrl.model.newServiceType.serviceNomenklature" name="nomenklature" minlength="5" required md-maxlength="10">
-                <div ng-messages="newServiceForm.nomenklature.$error" >
+                <div ng-messages="newServiceForm.nomenklature.$error">
                     <div ng-message="required" translate>Поле обязательно к заполнению</div>
                     <div ng-message="md-maxlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
                     <div ng-message="minlength" translate>Номенклатура должна быть от 5 до 10 символов</div>
                 </div>
             </md-input-container>
-
+            <md-input-container >
+                <label translate>Обязательные поля</label>
+                <md-tooltip md-direction="top">Поля, необходимые при создании заявки данного типа услуг.</md-tooltip>
+                <app-auxiliary-fields-selector></app-auxiliary-fields-selector>
+            </md-input-container>
             <lf-ng-md-file-input ng-disabled="$ctrl.model.inProgress" name="avatar" lf-files='$ctrl.model.newServiceType.file' lf-filesize="25KB" preview lf-required lf-mimetype="image/*"  lf-browse-label="Обзор" lf-remove-label="Удалить" lf-placeholder="Загрузите аватар для типа услуги"> </lf-ng-md-file-input>
             <div ng-messages="newServiceForm.avatar.$error" >
                 <div ng-message="required" translate>Поле обязательное</div>

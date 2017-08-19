@@ -1,0 +1,21 @@
+<md-chips ng-model="$ctrl.model.selectedFields" md-autocomplete-snap md-require-match="true">
+    <md-autocomplete
+            md-min-length="2"
+            md-input-maxlength="15"
+            md-delay="450"
+            md-selected-item="$ctrl.model.selectedItem"
+            md-search-text="$ctrl.model.searchText"
+            md-items="item in $ctrl.actions.querySearch($ctrl.model.searchText)"
+            md-item-text="item.name"
+            placeholder="Поиск полей">
+        <span md-highlight-text="$ctrl.model.searchText">ID : {{item.id}}; {{item.name}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+        <span>
+            <strong>{{$chip.name}}</strong>
+            <em>({{$chip.type}})</em>
+        </span>
+    </md-chip-template>
+</md-chips>
+
+
